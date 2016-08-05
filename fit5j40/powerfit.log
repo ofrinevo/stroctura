@@ -1,0 +1,15 @@
+2016-08-04 22:10:32,422 Target file read from: /home/renen/stroctura/map1.mrc
+2016-08-04 22:10:32,439 Target resolution: 3.00
+2016-08-04 22:10:32,439 Initial shape of density: 95 156 141
+2016-08-04 22:10:32,466 Shape after trimming: 82 143 129
+2016-08-04 22:10:32,479 Shape after extending: 84 144 135
+2016-08-04 22:10:32,480 Template file read from: /home/renen/stroctura/5j40.pdb
+2016-08-04 22:10:32,607 Reading in rotations.
+2016-08-04 22:10:32,711 Requested rotational sampling density: 20.00
+2016-08-04 22:10:32,712 Real rotational sampling density: 20.83
+2016-08-04 22:10:32,712 Starting search
+2016-08-04 22:23:18,382 Time for search: 12m 46s
+2016-08-04 22:23:18,382 Analyzing results
+2016-08-04 22:23:19,956 Writing solutions to file.
+2016-08-04 22:23:20,039 Writing PDBs to file.
+2016-08-04 22:23:20,388 Total time: 12m 48s
