@@ -2,14 +2,19 @@ from chimera import runCommand as rc
 import sys
 import os
 
+NUMOFRESULTS=10
 DEBUG = 0
 
-def get_principal_axes(mapFile,num):
-    
+def get_principal_axes(map_file,N):
+    sys.stdout=open("loglog.out","w")
     rc("open "+mapFile)
-    rc("measure inertia #"+ str(num)) 
+    rc("measure inertia #"+ str(num))
+    #TODO get it into a file or whatever
 
-def powerfit(map_file,res,monomer_file, angle = 10, output_path = ''):
+
+
+def powerfit(map_file,res,monomer_file, angle = 10, output_path = '',
+             num_of_results = NUMOFRESULTS):
     command = "powerfit "
     command += map_file+" "
     command += str(res)+" "
@@ -17,6 +22,9 @@ def powerfit(map_file,res,monomer_file, angle = 10, output_path = ''):
     if output_path:
         command += "-d "
         command += output_path+" "
+    if num_of_results:
+        command += "-n"
+        command += str(num_of_results)+" "
     command += "-a "
     command += str(angle)
     print command
@@ -57,3 +65,19 @@ def cyclic_shift(monomer_file,N,symetry_axis = (0,0,1) ,symetry_center = (0,0,0)
         if DEBUG:
             print command
         rc(command)
+
+def get_powerfit_results(map_file,res,monomer_file):
+    powerfit(map_file,res,monomer_file,output_path=monomer_file[:-4]+"PF")
+    infile = open(monomer_file[:-4]+"PF"+"/solutions.out","r")
+    infile=next(infile)
+    for line in infile:
+        #TODO
+    
+    
+
+def main(monomer_file,N,map_file):
+    #(axis,center)=get_principal_axes(map_file,N)
+    powerfit_results=get_powerfit_results(map_file,3,monomer_file)
+    #for result in powerfit_results:
+       # cyclic_shift(monomer_file,N,axis,center)
+        
