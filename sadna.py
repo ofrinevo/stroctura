@@ -1,7 +1,13 @@
 from chimera import runCommand as rc
+import sys
 import os
 
 DEBUG = 0
+
+def get_principal_axes(mapFile,num):
+    
+    rc("open "+mapFile)
+    rc("measure inertia #"+ str(num)) 
 
 def powerfit(map_file,res,monomer_file, angle = 10, output_path = ''):
     command = "powerfit "
