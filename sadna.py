@@ -1,14 +1,29 @@
 from chimera import runCommand as rc
+from chimera.tkgui import saveReplyLog
 import sys
 import os
 
 NUMOFRESULTS=10
 DEBUG = 0
 
-def get_principal_axes(map_file,N):
-    sys.stdout=open("loglog.out","w")
+def get_principal_axes(map_file,num):
     rc("open "+mapFile)
-    rc("measure inertia #"+ str(num))
+   # rc("measure inertia #"+ str(num))
+    rc("measure inertia #0")
+    saveReplyLog("log.txt")
+    log= open("log.txt", 'r')
+    for line in log:
+	if "v3" in line:
+	    symVec=line.split()
+	elif "center" in line:
+	    centerLine=line.split()
+	    break
+	
+    vecTup= (symVec[2], symVec[3], symVec[4])
+    centerTup= (centerLine[2], centerLine[3], centerLine[4])
+    print [vecTup, centerTup]
+	
+    return [vecTup, centerTup] #array of the two tupples
     #TODO get it into a file or whatever
 
 
@@ -70,14 +85,15 @@ def get_powerfit_results(map_file,res,monomer_file):
     powerfit(map_file,res,monomer_file,output_path=monomer_file[:-4]+"PF")
     infile = open(monomer_file[:-4]+"PF"+"/solutions.out","r")
     infile=next(infile)
-    for line in infile:
+   # for line in infile:
         #TODO
     
-    
-
 def main(monomer_file,N,map_file):
     #(axis,center)=get_principal_axes(map_file,N)
-    powerfit_results=get_powerfit_results(map_file,3,monomer_file)
+	tupArr=get_principal_axes(map_file,N)
+	symAxis= tupArr[0]
+	center= tupArr[1]
+    #powerfit_results=get_powerfit_results(map_file,3,monomer_file)
     #for result in powerfit_results:
-       # cyclic_shift(monomer_file,N,axis,center)
+       # cyclic_shift(monomer_file,N,symAxis,center)
         
