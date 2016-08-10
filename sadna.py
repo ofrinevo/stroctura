@@ -4,6 +4,7 @@ import sys
 import os
 
 NUMOFRESULTS=10
+NUMOFFIELDS=12
 DEBUG = 0
 
 def get_principal_axes(map_file,num):
@@ -13,11 +14,11 @@ def get_principal_axes(map_file,num):
     saveReplyLog("log.txt")
     log= open("log.txt", 'r')
     for line in log:
-	if "v3" in line:
-	    symVec=line.split()
-	elif "center" in line:
-	    centerLine=line.split()
-	    break
+        if "v3" in line:
+            symVec=line.split()
+        elif "center" in line:
+            centerLine=line.split()
+            break
 	
     vecTup= (symVec[2], symVec[3], symVec[4])
     centerTup= (centerLine[2], centerLine[3], centerLine[4])
@@ -84,9 +85,22 @@ def cyclic_shift(monomer_file,N,symetry_axis = (0,0,1) ,symetry_center = (0,0,0)
 def get_powerfit_results(map_file,res,monomer_file):
     powerfit(map_file,res,monomer_file,output_path=monomer_file[:-4]+"PF")
     infile = open(monomer_file[:-4]+"PF"+"/solutions.out","r")
-    infile=next(infile)
-   # for line in infile:
-        #TODO
+   # infile = open("fit5j40/solutions.out","r")
+    #infile=next(infile)
+    res=[[0 for x in range(NUMOFFIELDS)] for y in range(NUMOFRESULTS)]
+    i=0
+    for line in infile:
+        splitLine=line.split()
+        if DEBUG:
+            print splitLine
+        if i<=NUMOFRESULTS+1 and splitLine[0]!="#rank" and int(splitLine[0])<=10:
+            for j in range(12):
+                res[i][j]=splitLine[j+4]
+            i=i+1
+    return res
+
+            
+        
     
 def main(monomer_file,N,map_file):
     #(axis,center)=get_principal_axes(map_file,N)
