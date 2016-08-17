@@ -132,13 +132,15 @@ def get_powerfit_results(map_file,res,monomer_file):
         line=line.rstrip()
         if not line: break
         splitLine=line.split()
-        if i<=NUMOFRESULTS+1 and splitLine[0].isdigit() and int(splitLine[0])<=10:
+        if splitLine[0].isdigit() and int(splitLine[0])<=10:
             for j in range(12):
                 res[i][j]=float(splitLine[j+4])
             for k in range(3):
                 resEuler[i][k]=res[i][k]
             resEuler[i][3:]=mat2angles(vector2Matrix(res[i][3:]))
             i=i+1
+            if i>NUMOFRESULTS+1:
+                break
     
     return resEuler
 
