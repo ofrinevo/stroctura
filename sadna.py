@@ -92,6 +92,20 @@ def cyclic_shift(monomer_file,N,symetry_axis = (0,0,1) ,symetry_center = (0,0,0)
 		
 		
 
+def mat2angles(vector):
+	r11, r12, r13, r21, r22, r23, r31, r32, r33 = vector
+	cy = math.sqrt(r33*r33 + r23*r23)
+	if cy > cy_thresh: # cos(y) not close to zero, standard form
+		z = math.atan2(-r12,  r11) # atan2(cos(y)*sin(z), cos(y)*cos(z))
+		y = math.atan2(r13,  cy) # atan2(sin(y), cy)
+		x = math.atan2(-r23, r33) # atan2(cos(y)*sin(x), cos(x)*cos(y))
+	else: # cos(y) (close to) zero, so x -> 0.0 (see above)
+	    # so r21 -> sin(z), r22 -> cos(z) and
+	    z = math.atan2(r21,  r22)
+	    y = math.atan2(r13,  cy) # atan2(sin(y), cy)
+	    x = 0.0
+	return z, y, x 
+
 def get_powerfit_results(map_file,res,monomer_file):
     powerfit(map_file,res,monomer_file,output_path=monomer_file[:-4]+"PF")
     infile = open(monomer_file[:-4]+"PF"+"/solutions.out","r")
