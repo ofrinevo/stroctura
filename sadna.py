@@ -149,6 +149,7 @@ def main(monomer_file,N,map_file):
 	for nameFile in os.listdir(fitsDirPath):
 		if nameFile[:3]=="fit":
 			numID=nameFile[4:-4]
+			rc("close all")
 			cyclic_shift(nameFile,N,symAxis,center)
 		#	fileProtein= "/cycledFits/"+numID+".pdb"
 			score=get_score(map_file)
