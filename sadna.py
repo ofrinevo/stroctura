@@ -6,13 +6,14 @@ import sys
 import os
 import math
 import numpy
+import subprocess
 
 NUMOFRESULTS=10
 NUMOFFIELDS=12
 DEBUG = 1
 
 def get_principal_axes(map_file,num=0):
-    rc("open "+mapFile)
+    rc("open "+map_file)
    # rc("measure inertia #"+ str(num))
     rc("measure inertia #0")
     saveReplyLog("log.txt")
@@ -24,10 +25,14 @@ def get_principal_axes(map_file,num=0):
             centerLine=line.split()
             break
     rc("close all")
+    for i in range(2,5):
+        symVec[i]=float(symVec[i])
+        centerLine[i]=float(centerLine[i])
     vecTup= (symVec[2], symVec[3], symVec[4])
     centerTup= (centerLine[2], centerLine[3], centerLine[4])
+    
     print [vecTup, centerTup]
-	
+    
     return [vecTup, centerTup] #array of the two tupples
     #TODO get it into a file or whatever
 
@@ -77,8 +82,10 @@ symetry_axis - a tuple of the form (x,y,z)
 symetry_center -  a tuple of the form (x,y,z)
 """
 def cyclic_shift(monomer_file,N,symetry_axis = (0,0,1) ,symetry_center = (0,0,0)):
-	#os.system("mkdir cycledFits")
+    os.system("mkdir cycledFits")
+    
     for i in range(N):
+        print monomer_file
         rc("open " + monomer_file)
         if i == 0:
             continue
@@ -86,10 +93,11 @@ def cyclic_shift(monomer_file,N,symetry_axis = (0,0,1) ,symetry_center = (0,0,0)
         if DEBUG:
             print command
         rc(command)
-		
-		#filePath= "/cycledFits/"+numID+".pdb"
-	#	rc("write format pdb 0" + filePath) #saves the protein to the new folder with appropriate name
-	#	rc("close #0") #that way the model ID will always be 0 
+    print "1"
+    filePath= "/cycledFits/"+numID+".pdb"
+    print "2"
+    rc("write format pdb 0" + filePath) #saves the protein to the new folder with appropriate name
+    rc("close #0") #that way the model ID will always be 0 
 		
 		
 
@@ -171,25 +179,30 @@ def get_score(map_file):
 	
 	
 def main(monomer_file,N,map_file):
+   # rc("cd /home/ofri/stroctura")
     #(axis,center)=get_principal_axes(map_file,N)
     tupArr=get_principal_axes(map_file,N)
     symAxis= tupArr[0]
     center= tupArr[1]
-    #powerfit_results=get_powerfit_results(map_file,3,monomer_file)
-	   
-    fitsDirPath= monomer_file[:-4]+"PF"
+    powerfit_results=get_powerfit_results(map_file,3,monomer_file)  
+    #fitsDirPath= monomer_file[:-4]+"PF"
+    fitsDirPath= "fit5j40"
     results=[]
     for nameFile in os.listdir(fitsDirPath):
         if nameFile[:3]=="fit":
+            
             numID=nameFile[4:-4]
             rc("close all")
+            print "hello"
+            rc("cd fit5j40")
             cyclic_shift(nameFile,N,symAxis,center)
             #fileProtein= "/cycledFits/"+numID+".pdb"
             score=get_score(map_file)
             results.append([numID,score])
                     
     #sort the fits according to its score, so that the best score is first(place 0)		
-    sorted(results, key= lambda item:item[1], reverse= True) 
+    sorted(results, key= lambda item:item[1], reverse= True)
+    print results
 			
-	
+main("5j40.pdb",6,"map1.mrc")
         
