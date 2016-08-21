@@ -93,11 +93,12 @@ def cyclic_shift(monomer_file,N,symetry_axis = (0,0,1) ,symetry_center = (0,0,0)
         if DEBUG:
             print command
         rc(command)
-    print "1"
-    filePath= "/cycledFits/"+numID+".pdb"
-    print "2"
-    rc("write format pdb 0" + filePath) #saves the protein to the new folder with appropriate name
-    rc("close #0") #that way the model ID will always be 0 
+        #FIX
+    filePath= "after"+monomer_file
+    rc("combine #0,#1 close 1")
+    print "write format pdb #"+ str(N) + " " + filePath
+    rc("write format pdb #"+ str(N) + " " + filePath) #saves the protein to the new folder with appropriate name
+    #rc("close all") #that way the model ID will always be 0 
 		
 		
 
@@ -160,21 +161,20 @@ def get_scoreTempy(protein_map, map_file):
 	score.CCC(protein_map,target_map)
 	return score
 
-def get_score(map_file):
+def get_score(map_file, N, density):
     #We make a density map out of the structure of the protein we made in cycle_shift
-    rc("molmap #0 3")
+    rc("molmap #"+ str(N) + " " + str(density))
     rc("open " + str(map_file))
-    rc("measure correlation #1 #0") #Assumption: the cycled protein map is model #0 and the map we just opened is model #1
+    rc("measure correlation #0 #" +str(N)) #Assumption: the cycled protein map is model #0 and the map we just opened is model #1
     #again, reading from reply log
     saveReplyLog("log.txt")
     log= open("log.txt", 'r')
     for line in log:
         if "Correlation" in line:
             corrLine=line.split()
-            break
-        ind= corrLine.index("=")
-        score= float((corrLine[ind+1])[:-1])
-        score*=1000 #in order to make the score nicer than a number between -1 to 1.
+            ind= corrLine.index("=")
+            score= float((corrLine[ind+1])[:-1])
+            score*=1000 #in order to make the score nicer than a number between -1 to 1.
     return score
 	
 	
@@ -189,20 +189,23 @@ def main(monomer_file,N,map_file):
     fitsDirPath= "fit5j40"
     results=[]
     for nameFile in os.listdir(fitsDirPath):
-        if nameFile[:3]=="fit":
+        if nameFile[:6]=="fit_1.":
             
             numID=nameFile[4:-4]
             rc("close all")
             print "hello"
             rc("cd fit5j40")
             cyclic_shift(nameFile,N,symAxis,center)
+            print "out"
             #fileProtein= "/cycledFits/"+numID+".pdb"
-            score=get_score(map_file)
+            rc("cd ..")
+            score=get_score(map_file,N,3)
             results.append([numID,score])
                     
     #sort the fits according to its score, so that the best score is first(place 0)		
     sorted(results, key= lambda item:item[1], reverse= True)
     print results
+    #rc("close all")
 			
 main("5j40.pdb",6,"map1.mrc")
         
