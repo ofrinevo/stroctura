@@ -131,8 +131,8 @@ def mat2angles(M, cy_thresh=None):
 
 def get_powerfit_results(map_file,res,monomer_file):
    # powerfit(map_file,res,monomer_file,output_path=monomer_file[:-4]+"PF")
-   # infile = open(monomer_file[:-4]+"PF"+"/solutions.out","r")
-    infile = open("fit5j40/solutions.out","r")
+    infile = open(monomer_file[:-4]+"PF"+"/solutions.out","r")
+    #infile = open("fit5j40/solutions.out","r")
     res=[[0 for x in range(NUMOFFIELDS)] for y in range(NUMOFRESULTS)]
     resEuler = [[0 for x in range(6)] for y in range(NUMOFRESULTS)]
     i=0
@@ -185,16 +185,16 @@ def main(monomer_file,N,map_file):
     symAxis= tupArr[0]
     center= tupArr[1]
     powerfit_results=get_powerfit_results(map_file,3,monomer_file)  
-    #fitsDirPath= monomer_file[:-4]+"PF"
-    fitsDirPath= "fit5j40"
+    fitsDirPath= monomer_file[:-4]+"PF"
+    #fitsDirPath= "4DYCPF"
     results=[]
     for nameFile in os.listdir(fitsDirPath):
-        if nameFile[:6]=="fit_1.":
+        if nameFile[:3]=="fit":
             
             numID=nameFile[4:-4]
             rc("close all")
             print "hello"
-            rc("cd fit5j40")
+            rc("cd "+ fitsDirPath)
             cyclic_shift(nameFile,N,symAxis,center)
             print "out"
             #fileProtein= "/cycledFits/"+numID+".pdb"
@@ -207,5 +207,5 @@ def main(monomer_file,N,map_file):
     print results
     #rc("close all")
 			
-main("5j40.pdb",6,"map1.mrc")
+main("4dyc.pdb",4,"map.mrc")
         
