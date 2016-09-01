@@ -253,7 +253,8 @@ def checkAllNoPowerfit(monomer_file,N,map_file, fits_dir):
             rc("close all")
 	    rotation,translation= cyclic_shift(monomer_file,nameFile,fits_dir,N,symAxis,center)
             score=get_score(map_file,N,3)
-            results.append([numID,score, rotation, translation])
+            zAngle,yAngle,xAngle=mat2angles(rotation)
+	    results.append([numID,score, [xAngle,yAngle,zAngle], translation])
               
     #sort the fits according to its score, so that the best score is first(place 0)	
     sortedResults= sorted(results, key= lambda item:item[1], reverse= True)
