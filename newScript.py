@@ -230,7 +230,7 @@ def main(monomer_file,N,map_file):
 	    rotation,translation= cyclic_shift(monomer_file,nameFile,fits_dir,N,symAxis,center)
             score=get_score(map_file,N,3)
             results.append([numID,score, rotation, translation])
-	    #should be xAngle,yAngle,zAngle=mat2angles(rotation)
+	    #should be zAngle,yAngle,xAngle=mat2angles(rotation)
 	    #results.append([numID,score, [xAngle,yAngle,zAngle], translation])
                                   
     #sort the fits according to its score, so that the best score is first(place 0)	
