@@ -184,7 +184,7 @@ def main(monomer_file,N,map_file):
     tupArr=get_principal_axes(map_file,N)
     symAxis= tupArr[0]
     center= tupArr[1]
-    powerfit_results=get_powerfit_results(map_file,3,monomer_file)  
+   # powerfit_results=get_powerfit_results(map_file,3,monomer_file)  
     fitsDirPath= monomer_file[:-4]+"PF"
     #fitsDirPath= "4DYCPF"
     results=[]
@@ -193,13 +193,11 @@ def main(monomer_file,N,map_file):
             
             numID=nameFile[4:-4]
             rc("close all")
-            print "hello"
             rc("cd "+ fitsDirPath)
             cyclic_shift(nameFile,N,symAxis,center)
-            print "out"
             #fileProtein= "/cycledFits/"+numID+".pdb"
             rc("cd ..")
-            score=get_score(map_file,N,3)
+            score=get_score(map_file,N,10)
             results.append([numID,score])
                     
     #sort the fits according to its score, so that the best score is first(place 0)		
