@@ -1,0 +1,377 @@
+map.mrc opened
+Inertia axes for 4dyc.pdb
+	v1 =  0.144  0.828  0.541   a = 36.484   r1 = 16.447
+	v2 = -0.717  0.464 -0.520   b = 30.399   r2 = 18.759
+	v3 = -0.682 -0.313  0.661   c = 20.699   r3 = 21.238
+	center =   51.088   18.191   17.775
+afterfit_9.pdb
+.gitignore
+afterfit_3.pdb
+fit_7.pdb
+lcc.mrc
+afterfit_8.pdb
+powerfit.log
+afterfit_10.pdb
+fit_2.pdb
+afterfit_4.pdb
+fit_8.pdb
+fit_5.pdb
+afterfit_7.pdb
+solutions.out
+afterfit_1.pdb
+fit_10.pdb
+fit_4.pdb
+fit_9.pdb
+afterfit_2.pdb
+afterfit_5.pdb
+afterfit_6.pdb
+fit_3.pdb
+fit_6.pdb
+fit_1.pdb
+mapnew4.mrc
+cycledFits
+#0, chain A: terminase small subunit
+#0, chain B: terminase small subunit
+4dyc.pdb opened
+afterfit_9.pdb
+afterfit_9.pdb opened
+Executing match ['#1', '#0'], no iteration
+map.mrc opened
+Inertia axes for 4dyc.pdb
+	v1 =  0.144  0.828  0.541   a = 36.484   r1 = 16.447
+	v2 = -0.717  0.464 -0.520   b = 30.399   r2 = 18.759
+	v3 = -0.682 -0.313  0.661   c = 20.699   r3 = 21.238
+	center =   51.088   18.191   17.775
+afterfit_9.pdb
+.gitignore
+afterfit_3.pdb
+fit_7.pdb
+lcc.mrc
+afterfit_8.pdb
+powerfit.log
+afterfit_10.pdb
+fit_2.pdb
+afterfit_4.pdb
+fit_8.pdb
+fit_5.pdb
+afterfit_7.pdb
+solutions.out
+afterfit_1.pdb
+fit_10.pdb
+fit_4.pdb
+fit_9.pdb
+afterfit_2.pdb
+afterfit_5.pdb
+afterfit_6.pdb
+fit_3.pdb
+fit_6.pdb
+fit_1.pdb
+mapnew4.mrc
+cycledFits
+#0, chain A: terminase small subunit
+#0, chain B: terminase small subunit
+4dyc.pdb opened
+fit_7.pdb
+Model 1 (fit_7.pdb) appears to be a protein without secondary structure assignments.
+Automatically computing assignments using 'ksdssp' and parameter values:
+  energy cutoff -0.5
+  minimum helix length 3
+  minimum strand length 3
+Use command 'help ksdssp' for more information.
+fit_7.pdb opened
+Executing match ['#1', '#0'], no iteration
+Motion of #1 in #0 coordinate system
+  Matrix rotation and translation
+    -0.70353264  -0.68699259   0.18188733  72.44911878
+    -0.07585340  -0.18188706  -0.98038939  43.79584217
+     0.70660320  -0.70353271   0.07585276  35.02343884
+  Axis   0.32504690  -0.61604896   0.71751529
+  Axis point  19.38529316  47.12205261   0.00000000
+  Rotation angle (degrees) 154.79413610
+  Shift along axis  21.69883179
+RMSD between 2178 atom pairs is 0.000 angstroms
+fit_7.pdb
+Model 2 (fit_7.pdb) appears to be a protein without secondary structure assignments.
+Automatically computing assignments using 'ksdssp' and parameter values:
+  energy cutoff -0.5
+  minimum helix length 3
+  minimum strand length 3
+Use command 'help ksdssp' for more information.
+fit_7.pdb opened
+turn -0.682,-0.313,0.661 90 center 51.088,18.191,17.775 models #2
+fit_7.pdb
+Model 3 (fit_7.pdb) appears to be a protein without secondary structure assignments.
+Automatically computing assignments using 'ksdssp' and parameter values:
+  energy cutoff -0.5
+  minimum helix length 3
+  minimum strand length 3
+Use command 'help ksdssp' for more information.
+fit_7.pdb opened
+turn -0.682,-0.313,0.661 180 center 51.088,18.191,17.775 models #3
+fit_7.pdb
+Model 4 (fit_7.pdb) appears to be a protein without secondary structure assignments.
+Automatically computing assignments using 'ksdssp' and parameter values:
+  energy cutoff -0.5
+  minimum helix length 3
+  minimum strand length 3
+Use command 'help ksdssp' for more information.
+fit_7.pdb opened
+turn -0.682,-0.313,0.661 270 center 51.088,18.191,17.775 models #4
+Executing match ['#4', '#0'], no iteration
+Motion of #4 in #0 coordinate system
+  Matrix rotation and translation
+    -0.95303547   0.08587360   0.29042920  69.20717999
+    -0.05923782   0.88758155  -0.45682587  14.18594082
+    -0.29700889  -0.45257565  -0.84080973  98.02448991
+  Axis   0.00702387   0.97079450  -0.23980974
+  Axis point  42.19608905   0.00000000  45.23756959
+  Rotation angle (degrees) 162.38885333
+  Shift along axis  -9.24949160
+Motion of #4 original coordinates in #0 coordinate system
+  Matrix rotation and translation
+    -0.70353262  -0.68699262   0.18188732  72.44911972
+    -0.07585339  -0.18188706  -0.98038939  43.79584201
+     0.70660323  -0.70353268   0.07585276  35.02343791
+  Axis   0.32504691  -0.61604895   0.71751529
+  Axis point  19.38529279  47.12205308   0.00000000
+  Rotation angle (degrees) 154.79413421
+  Shift along axis  21.69883227
+RMSD between 2178 atom pairs is 0.000 angstroms
+Remapping #2 chain A to C
+Remapping #3 chain A to D
+Remapping #4 chain A to E
+Remapping #2 chain B to F
+Remapping #3 chain B to G
+Remapping #4 chain B to H
+IndexError Exception in Tk callback
+  Function: <bound method MidasUI.processCommand of <Midas.midas_ui.MidasUI instance at 0x7fc361d32d40>> (type: <type 'instancemethod'>)
+  Module: <module 'Midas.midas_ui' from '/home/ofri/.local/UCSF-Chimera64-1.11/share/Midas/midas_ui.pyc'> (line: 406)
+  Args: (<Tkinter.Event instance at 0x7fc359f249e0>,)
+  Event type: KeyPress (type num: 2)
+Traceback (innermost last):
+  File "/home/ofri/.local/UCSF-Chimera64-1.11/lib/python2.7/site-packages/Pmw/Pmw_1_3_3/lib/PmwBase.py", line 1747, in __call__
+    return apply(self.func, args)
+  File "/home/ofri/.local/UCSF-Chimera64-1.11/share/Midas/midas_ui.py", line 416, in processCommand
+    midas_text.makeCommand(cmdText)
+  File "/home/ofri/.local/UCSF-Chimera64-1.11/share/Midas/midas_text.py", line 69, in makeCommand
+    f(c, args)
+  File "/home/ofri/.local/UCSF-Chimera64-1.11/share/Midas/midas_text.py", line 1606, in doOpen
+    modelArg, noprefs)
+  File "<string>", line 1, in <module>
+    None
+  File "/home/ofri/.local/UCSF-Chimera64-1.11/share/Midas/__init__.py", line 2208, in open
+    noprefs=noprefs)
+  File "/home/ofri/.local/UCSF-Chimera64-1.11/share/chimera/__init__.py", line 1919, in open
+    models = func(filename, *args, **kw)
+  File "/home/ofri/.local/UCSF-Chimera64-1.11/share/chimera/__init__.py", line 1291, in _openPython
+    loadFunc(sandboxName, fileName, f)
+  File "newScript.py", line 268, in <module>
+    checkAllNoPowerfit("4dyc.pdb",4,"map.mrc", "4dycPF1")
+  File "newScript.py", line 255, in checkAllNoPowerfit
+    rotation,translation= cyclic_shift(monomer_file,nameFile,fits_dir,N,symAxis,center)
+  File "newScript.py", line 106, in cyclic_shift
+    transform= findTranform(fit_file)
+  File "newScript.py", line 127, in findTranform
+    translationArray.append([firstRow[3], secRow[3], thirdRow[3]])
+IndexError: list index out of range
+
+================================================
+  Event contents:
+    char: 
+    delta: 0
+    height: ??
+    keycode: 36
+    keysym: Return
+    keysym_num: 65293
+    num: ??
+    send_event: False
+    serial: 228601
+    state: 16
+    time: 2497611
+    type: 2
+    widget: .140477185352624.140477136579832.140477133499712.140477133499928.140477133500000
+    width: ??
+    x: 387
+    x_root: 1081
+    y: 1
+    y_root: 135
+
+IndexError: list index out of range
+
+  File "newScript.py", line 127, in findTranform
+    translationArray.append([firstRow[3], secRow[3], thirdRow[3]])
+
+See reply log for Python traceback.
+
+
+map.mrc opened
+Inertia axes for combination
+	v1 =  0.121  0.843  0.524   a = 68.134   r1 = 33.193
+	v2 =  0.721 -0.437  0.537   b = 68.134   r2 = 33.193
+	v3 =  0.682  0.313 -0.661   c = 29.439   r3 = 43.092
+	center =   31.422   9.1656   36.835
+afterfit_9.pdb
+.gitignore
+afterfit_3.pdb
+fit_7.pdb
+lcc.mrc
+afterfit_8.pdb
+powerfit.log
+afterfit_10.pdb
+fit_2.pdb
+afterfit_4.pdb
+fit_8.pdb
+fit_5.pdb
+afterfit_7.pdb
+solutions.out
+afterfit_1.pdb
+fit_10.pdb
+fit_4.pdb
+fit_9.pdb
+afterfit_2.pdb
+afterfit_5.pdb
+afterfit_6.pdb
+fit_3.pdb
+fit_6.pdb
+fit_1.pdb
+mapnew4.mrc
+cycledFits
+#0, chain A: terminase small subunit
+#0, chain B: terminase small subunit
+4dyc.pdb opened
+fit_7.pdb
+Model 1 (fit_7.pdb) appears to be a protein without secondary structure assignments.
+Automatically computing assignments using 'ksdssp' and parameter values:
+  energy cutoff -0.5
+  minimum helix length 3
+  minimum strand length 3
+Use command 'help ksdssp' for more information.
+fit_7.pdb opened
+Executing match ['#1', '#0'], no iteration
+Motion of #1 in #0 coordinate system
+  Matrix rotation and translation
+    -0.70353264  -0.68699259   0.18188733  72.44911878
+    -0.07585340  -0.18188706  -0.98038939  43.79584217
+     0.70660320  -0.70353271   0.07585276  35.02343884
+  Axis   0.32504690  -0.61604896   0.71751529
+  Axis point  19.38529316  47.12205261   0.00000000
+  Rotation angle (degrees) 154.79413610
+  Shift along axis  21.69883179
+RMSD between 2178 atom pairs is 0.000 angstroms
+fit_7.pdb
+Model 2 (fit_7.pdb) appears to be a protein without secondary structure assignments.
+Automatically computing assignments using 'ksdssp' and parameter values:
+  energy cutoff -0.5
+  minimum helix length 3
+  minimum strand length 3
+Use command 'help ksdssp' for more information.
+fit_7.pdb opened
+turn -0.682,-0.313,0.661 90 center 51.088,18.191,17.775 models #2
+fit_7.pdb
+Model 3 (fit_7.pdb) appears to be a protein without secondary structure assignments.
+Automatically computing assignments using 'ksdssp' and parameter values:
+  energy cutoff -0.5
+  minimum helix length 3
+  minimum strand length 3
+Use command 'help ksdssp' for more information.
+fit_7.pdb opened
+turn -0.682,-0.313,0.661 180 center 51.088,18.191,17.775 models #3
+fit_7.pdb
+Model 4 (fit_7.pdb) appears to be a protein without secondary structure assignments.
+Automatically computing assignments using 'ksdssp' and parameter values:
+  energy cutoff -0.5
+  minimum helix length 3
+  minimum strand length 3
+Use command 'help ksdssp' for more information.
+fit_7.pdb opened
+turn -0.682,-0.313,0.661 270 center 51.088,18.191,17.775 models #4
+Executing match ['#4', '#0'], no iteration
+Motion of #4 in #0 coordinate system
+  Matrix rotation and translation
+    -0.95303547   0.08587360   0.29042920  69.20717999
+    -0.05923782   0.88758155  -0.45682587  14.18594082
+    -0.29700889  -0.45257565  -0.84080973  98.02448991
+  Axis   0.00702387   0.97079450  -0.23980974
+  Axis point  42.19608905   0.00000000  45.23756959
+  Rotation angle (degrees) 162.38885333
+  Shift along axis  -9.24949160
+Motion of #4 original coordinates in #0 coordinate system
+  Matrix rotation and translation
+    -0.70353262  -0.68699262   0.18188732  72.44911972
+    -0.07585339  -0.18188706  -0.98038939  43.79584201
+     0.70660323  -0.70353268   0.07585276  35.02343791
+  Axis   0.32504691  -0.61604895   0.71751529
+  Axis point  19.38529279  47.12205308   0.00000000
+  Rotation angle (degrees) 154.79413421
+  Shift along axis  21.69883227
+RMSD between 2178 atom pairs is 0.000 angstroms
+Remapping #2 chain A to C
+Remapping #3 chain A to D
+Remapping #4 chain A to E
+Remapping #2 chain B to F
+Remapping #3 chain B to G
+Remapping #4 chain B to H
+['-0.70353264', '-0.68699259', '0.18188733', '72.44911878']
+['energy', 'cutoff', '-0.5']
+IndexError Exception in Tk callback
+  Function: <bound method MidasUI.processCommand of <Midas.midas_ui.MidasUI instance at 0x7fc361d32d40>> (type: <type 'instancemethod'>)
+  Module: <module 'Midas.midas_ui' from '/home/ofri/.local/UCSF-Chimera64-1.11/share/Midas/midas_ui.pyc'> (line: 406)
+  Args: (<Tkinter.Event instance at 0x7fc3627c89e0>,)
+  Event type: KeyPress (type num: 2)
+Traceback (innermost last):
+  File "/home/ofri/.local/UCSF-Chimera64-1.11/lib/python2.7/site-packages/Pmw/Pmw_1_3_3/lib/PmwBase.py", line 1747, in __call__
+    return apply(self.func, args)
+  File "/home/ofri/.local/UCSF-Chimera64-1.11/share/Midas/midas_ui.py", line 416, in processCommand
+    midas_text.makeCommand(cmdText)
+  File "/home/ofri/.local/UCSF-Chimera64-1.11/share/Midas/midas_text.py", line 69, in makeCommand
+    f(c, args)
+  File "/home/ofri/.local/UCSF-Chimera64-1.11/share/Midas/midas_text.py", line 1606, in doOpen
+    modelArg, noprefs)
+  File "<string>", line 1, in <module>
+    None
+  File "/home/ofri/.local/UCSF-Chimera64-1.11/share/Midas/__init__.py", line 2208, in open
+    noprefs=noprefs)
+  File "/home/ofri/.local/UCSF-Chimera64-1.11/share/chimera/__init__.py", line 1919, in open
+    models = func(filename, *args, **kw)
+  File "/home/ofri/.local/UCSF-Chimera64-1.11/share/chimera/__init__.py", line 1291, in _openPython
+    loadFunc(sandboxName, fileName, f)
+  File "newScript.py", line 269, in <module>
+    checkAllNoPowerfit("4dyc.pdb",4,"map.mrc", "4dycPF1")
+  File "newScript.py", line 256, in checkAllNoPowerfit
+    rotation,translation= cyclic_shift(monomer_file,nameFile,fits_dir,N,symAxis,center)
+  File "newScript.py", line 106, in cyclic_shift
+    transform= findTranform(fit_file)
+  File "newScript.py", line 128, in findTranform
+    translationArray.append([firstRow[3], secRow[3], thirdRow[3]])
+IndexError: list index out of range
+
+================================================
+  Event contents:
+    char: 
+    delta: 0
+    height: ??
+    keycode: 36
+    keysym: Return
+    keysym_num: 65293
+    num: ??
+    send_event: False
+    serial: 239170
+    state: 16
+    time: 2574046
+    type: 2
+    widget: .140477185352624.140477136579832.140477133499712.140477133499928.140477133500000
+    width: ??
+    x: 452
+    x_root: 1146
+    y: -38
+    y_root: 96
+
+IndexError: list index out of range
+
+  File "newScript.py", line 128, in findTranform
+    translationArray.append([firstRow[3], secRow[3], thirdRow[3]])
+
+See reply log for Python traceback.
+
+
+
