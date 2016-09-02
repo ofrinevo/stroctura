@@ -87,7 +87,7 @@ def cyclic_shift(monomer_file,fit_file,fits_dir,N,symetry_axis = (0,0,1) ,symetr
     rc("cd "+fits_dir)
     transArray=[]
     for i in range(N):
-        print fit_file
+        #print fit_file
         rc("open " + fit_file)
         if i == 0: 
             rc("match #" + str(i+1) + " #0 showMatrix true move false")
@@ -96,7 +96,7 @@ def cyclic_shift(monomer_file,fit_file,fits_dir,N,symetry_axis = (0,0,1) ,symetr
         if DEBUG:
             print command
         rc(command)
-    rc("match #" + str(i+1) + " #0 showMatrix true move false")
+        rc("match #" + str(i+1) + " #0 showMatrix true move false")
         #FIX
     filePath= "after"+fit_file
     rc("close 0")
@@ -123,10 +123,8 @@ def findTranform(fit_file):
             firstRow=transFile.next().split()
             secRow=transFile.next().split()
             thirdRow=transFile.next().split()
-            rotationsMats.append([[firstRow[0],firstRow[1],firstRow[2]],[secRow[0],secRow[1],secRow[2]],[thirdRow[0],thirdRow[1],thirdRow[2]]])
-            print "firstrow is: "
-            print firstRow
-            translationArray.append([firstRow[3], secRow[3], thirdRow[3]])
+            rotationsMats.append([[float(firstRow[0]),float(firstRow[1]),float(firstRow[2])],[float(secRow[0]),float(secRow[1]),float(secRow[2])],[float(thirdRow[0]),float(thirdRow[1]),float(thirdRow[2])]])
+            translationArray.append([float(firstRow[3]), float(secRow[3]), float(thirdRow[3])])
             firstMonomer=False
 
     return rotationsMats,translationArray
@@ -215,7 +213,7 @@ def output(resultsArr):
 "transformations:\n") 
         for j in range (len(resultsArr[i][2])):
             out.write("monomer " +str(j+1)+ ":\n")
-            out.write("rotations: " +str((resultsArr[i][2])[j]) + "\n")
+            out.write("rotations: " +str(mat2angles((resultsArr[i][2])[j])) + "\n")
             out.write("translations: " +str((resultsArr[i][3])[j]) + "\n\n")
         
 def main(monomer_file,N,map_file):
@@ -233,8 +231,6 @@ def main(monomer_file,N,map_file):
         rotation,translation= cyclic_shift(monomer_file,nameFile,fits_dir,N,symAxis,center)
         score=get_score(map_file,N,3)
         results.append([numID,score, rotation, translation])
-        #should be zAngle,yAngle,xAngle=mat2angles(rotation)
-        #results.append([numID,score, [xAngle,yAngle,zAngle], translation])
                                   
     #sort the fits according to its score, so that the best score is first(place 0) 
     sortedResults= sorted(results, key= lambda item:item[1], reverse= True)
@@ -249,15 +245,12 @@ def checkAllNoPowerfit(monomer_file,N,map_file, fits_dir):
     center= tupArr[1]
     results=[]
     for nameFile in os.listdir(fits_dir):
-        print nameFile
-    for nameFile in os.listdir(fits_dir):
         if nameFile[:3]=="fit":            
             numID=nameFile[4:-4]
             rc("close all")
             rotation,translation= cyclic_shift(monomer_file,nameFile,fits_dir,N,symAxis,center)
             score=get_score(map_file,N,3)
-            zAngle,yAngle,xAngle=mat2angles(rotation)
-            results.append([numID,score, [xAngle,yAngle,zAngle], translation])
+            results.append([numID,score, rotation, translation])
               
     #sort the fits according to its score, so that the best score is first(place 0) 
     sortedResults= sorted(results, key= lambda item:item[1], reverse= True)
@@ -267,4 +260,4 @@ def checkAllNoPowerfit(monomer_file,N,map_file, fits_dir):
 
             
 #main("4dyc.pdb",4,"map.mrc")
-checkAllNoPowerfit("4dyc.pdb",4,"map.mrc", "4dycPF1")
+checkAllNoPowerfit("4dyc.pdb",4,"map.mrc", "highRes")
