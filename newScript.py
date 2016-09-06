@@ -7,9 +7,12 @@ import os
 import math
 import numpy
 import subprocess
+import VolumeViewer
+from Segger import segment_dialog as SD
 
-NUMOFRESULTS=10
-NUMOFFIELDS=12
+ROTATION_DEGREE = 20
+NUMOFRESULTS = 10
+NUMOFFIELDS = 12
 DEBUG = 1
 _FLOAT_EPS_4 = numpy.finfo(float).eps * 4.0
 
@@ -35,7 +38,33 @@ def get_principal_axes(map_file):
     return [vecTup, centerTup] #array of the two tupples
     #TODO get it into a file or whatever
 
+def runSegment(map_file):
+    chimeraMap = VolumeViewer.open_volume_file(map_file)[0]
+    dialog = SD.Volume_Segmentation_Dialog()
+    trsh = dialog.Segment()
 
+    ###CODE MODYFIED FROM SEGGGER.SEGNEMT_DIALOG.PY###
+    dmap = dialog.SegmentationMap()
+    smod = dialog.CurrentSegmentation()
+    regs = smod.selected_regions()
+
+    # Choose file path.
+    dir = os.path.dirname ( dmap.data.path )
+    fprefix = os.path.splitext ( dmap.name ) [0]
+    fname = fprefix + "_region_%d.mrc"
+    import OpenSave
+    d = OpenSave.SaveModal ( title = "Save Masked Map",
+                                initialdir = dir, initialfile = fname,
+                                filters = [('MRC map', '*.mrc', '.mrc')] )
+    paths_and_types = d.run ( self.toplevel_widget )
+    path = paths_and_types[0][0]
+
+    for reg in regs :
+        self.SaveRegsToMRC ( [reg], dmap, path % (reg.rid,) )
+    ###END OF MODYFIED CODE###
+
+    rc("close all")
+    
 
 def powerfit(map_file,res,monomer_file, angle = 10, output_path = '',
              num_of_results = NUMOFRESULTS):
@@ -103,9 +132,9 @@ def cyclic_shift(monomer_file,fit_file,fits_dir,N,symetry_axis = (0,0,1) ,symetr
     rc("combine #0,#1 close 1")
     rc("cd ..")
     saveReplyLog("transformsLog.txt")
-    transform= findTranform(fit_file) 
+    #transform= findTranform(fit_file) 
     
-    return transform
+    #return transform
         
 def findTranform(fit_file):
     firstMonomer=True
@@ -215,9 +244,10 @@ def output(resultsArr):
             out.write("monomer " +str(j+1)+ ":\n")
             out.write("rotations: " +str(mat2angles((resultsArr[i][2])[j])) + "\n")
             out.write("translations: " +str((resultsArr[i][3])[j]) + "\n\n")
-        
+
+                
 def main(monomer_file,N,map_file):
-    tupArr=get_principal_axes(map_file,N)
+    tupArr=get_principal_axes(map_file)
     symAxis= tupArr[0]
     center= tupArr[1]
     powerfit_results=get_powerfit_results(map_file,3,monomer_file)  
