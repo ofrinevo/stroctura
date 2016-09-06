@@ -38,31 +38,30 @@ def get_principal_axes(map_file):
     return [vecTup, centerTup] #array of the two tupples
     #TODO get it into a file or whatever
 
-def runSegment(map_file):
-    chimeraMap = VolumeViewer.open_volume_file(map_file)[0]
-    dialog = SD.Volume_Segmentation_Dialog()
-    trsh = dialog.Segment()
 
-    ###CODE MODYFIED FROM SEGGGER.SEGNEMT_DIALOG.PY###
+def runSegment(map_file):
+    """Segments the map from the given path and saves the results in
+    the directory segmentationsDir.
+    """
+    chimeraMap = VolumeViewer.open_volume_file(map_file)[0] #opens the map
+    dialog = SD.Volume_Segmentation_Dialog() #creates a segmentor object
+    trsh = dialog.Segment() #segments the map
+
+    #code for saving the results
     dmap = dialog.SegmentationMap()
     smod = dialog.CurrentSegmentation()
     regs = smod.selected_regions()
-
-    # Choose file path.
+    if len(regs)==0 :
+            regs = smod.regions
     dir = os.path.dirname ( dmap.data.path )
     fprefix = os.path.splitext ( dmap.name ) [0]
     fname = fprefix + "_region_%d.mrc"
-    import OpenSave
-    d = OpenSave.SaveModal ( title = "Save Masked Map",
-                                initialdir = dir, initialfile = fname,
-                                filters = [('MRC map', '*.mrc', '.mrc')] )
-    paths_and_types = d.run ( self.toplevel_widget )
-    path = paths_and_types[0][0]
-
-    for reg in regs :
+    path = "segmentationsDir/"+fname
+    os.system("mkdir segmentationsDir")
+    for reg in regs : #save each result in a different file
         self.SaveRegsToMRC ( [reg], dmap, path % (reg.rid,) )
-    ###END OF MODYFIED CODE###
-
+    #end of code for saving the results
+        
     rc("close all")
     
 
@@ -83,15 +82,15 @@ def powerfit(map_file,res,monomer_file, angle = 10, output_path = '',
     os.system(command)
 
 
-"""
-    outputs a string with the turn command of the form
+
+def get_turn_command(deg,symetry_axis,symetry_center,model_index):
+    """outputs a string with the turn command of the form
     turn symmetry_axis deg center symmetry_center modles #models_index
     deg - turning degree
     symmetry_axis - a tuple of the form (x,y,z)
     symetry_center -  a tuple of the form (x,y,z)
     model_index - the index of the model
-"""
-def get_turn_command(deg,symetry_axis,symetry_center,model_index):
+    """
     command = "turn "
     command += str(symetry_axis).replace(' ','')[1:-1] #get only x,y,z out of (x,y,z)
     command += " "
