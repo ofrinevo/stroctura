@@ -23,9 +23,9 @@ def get_principal_axes(map_file):
     saveReplyLog("log.txt")
     log= open("log.txt", 'r')
     for line in log:
-    	if "v1" in line:
+        if "v1" in line:
             lineVec1=line.split()
-    	elif "v2" in line:
+        elif "v2" in line:
             lineVec2=line.split()
         elif "v3" in line:
             lineVec3=line.split()
@@ -72,10 +72,16 @@ def runSegment(map_file):
     rc("close all")
 
 def fitToSegment(monomer_file):
-    rc( "open " + monomer_file)
-    for segmentedMapFile in os.listdir( "segmentationsDir" ) : 
+    os.system("mkdir fitDir")
+    i=0
+    for segmentedMapFile in os.listdir( "segmentationsDir" ) :
+        rc( "open " + monomer_file)
         rc( "open segmentationsDir/" + segmentedMapFile)
         rc( "fitmap #0 #1" )
+        rc("write format pdb #0 fitDir/model" + str(i)+".pdb")
+        rc("close all")
+        i+=1
+    
 
 def powerfit(map_file,res,monomer_file, angle = 10, output_path = '',
              num_of_results = NUMOFRESULTS):
@@ -121,30 +127,34 @@ N - number of symmetry
 symetry_axis - a tuple of the form (x,y,z)
 symetry_center -  a tuple of the form (x,y,z)
 """
-def cyclic_shift(monomer_file,fit_file,fits_dir,N,symetry_axis = (0,0,1) ,symetry_center = (0,0,0)):
-   os.system("mkdir cycledFits")
-    rc("open " + monomer_file)
+def cyclic_shift(monomer_file,fit_file,fits_dir,N,symetry_axis ,symetry_center,numOfAxis):
+    #rc("open " + monomer_file)
     rc("cd "+fits_dir)
-    transArray=[]
+    #transArray=[]
     for i in range(N):
         #print fit_file
         rc("open " + fit_file)
         if i == 0: 
-            rc("match #" + str(i+1) + " #0 showMatrix true move false")
+##            rc("match #" + str(i+1) + " #0 showMatrix true move false")
             continue
-        command = get_turn_command(i*360/N,symetry_axis,symetry_center,i+1) #changed for output
+        command = get_turn_command(i*360/N,symetry_axis,symetry_center,i) #changed for output
         if DEBUG:
             print command
+        
         rc(command)
-        rc("match #" + str(i+1) + " #0 showMatrix true move false")
+        #rc("match #" + str(i+1) + " #0 showMatrix true move false")
     filePath= "after"+fit_file+" axis "+str(numOfAxis)
-    rc("close 0")
+    os.system("mkdir cycledFits")
+    #rc("close 0")
+    rc("cd cycledFits")
     rc("combine #0,#1 close 1")
+    rc("write format pdb #"+ str(N) + " " + filePath+".pdb")
     rc("cd ..")
-    saveReplyLog("transformsLog.txt")
-    transform= findTranform(fit_file) 
-    
-    return transform
+    rc("cd ..")
+    #saveReplyLog("transformsLog.txt")
+##    transform= findTranform(fit_file) 
+##    
+##    return transform
         
 def findTranform(fit_file):
     firstMonomer=True
@@ -231,9 +241,10 @@ def get_scoreTempy(protein_map, map_file):
 
 def get_score(map_file, N, density):
     #We make a density map out of the structure of the protein we made in cycle_shift
-    rc("molmap #"+ str(0) + " " + str(density))
+    
+    rc("molmap #"+str(N)+" " + str(density))
     rc("open " + str(map_file))
-    rc("measure correlation #0 #1") #Assumption: the cycled protein map is model #0 and the map we just opened is model #1
+    rc("measure correlation #0 #"+str(N)) #Assumption: the cycled protein map is model #0 and the map we just opened is model #1
     #again, reading from reply log
     saveReplyLog("log.txt")
     log= open("log.txt", 'r')
@@ -278,22 +289,33 @@ def main(monomer_file,N,map_file):
     output(sortedResults)
     print "Done"
 
-def checkAllNoPowerfit(monomer_file,N,map_file, fits_dir):
-
+def checkAllNoPowerfit(monomer_file,N,map_file,density):
+    #calculates symm axes and center
     tupArr=get_principal_axes(map_file)
-    symAxis= tupArr[0]
-    center= tupArr[1]
+    axes=tupArr[0:3]
+    center= tupArr[3]
+    #all closed
+    
+    #gets segmentation
+    runSegment(map_file)
+    #all closed
+    
+    rotation=translation=tempScore=[0,0,0]
     results=[]
-    for nameFile in os.listdir(fits_dir):
-        if nameFile[:3]=="fit":            
-            numID=nameFile[4:-4]
+    fitToSegment(monomer_file)
+    fits_dir="fitDir"
+    for fits in os.listdir(fits_dir):
+        if fits[-4:]!=".pdb":
+            continue
+        numID=fits
+        for i in range (3):
+            #rotation[i],translation[i]= cyclic_shift(monomer_file,fits,fits_dir,N,axes[i],center,i)
+            cyclic_shift(monomer_file,fits,fits_dir,N,axes[i],center,i)
+            tempScore[i]=get_score(map_file,N,density)
             rc("close all")
-            for i in range (3):
-            	rotation[i],translation[i]= cyclic_shift(monomer_file,nameFile,fits_dir,N,axes[i],center,i)
-            	tempScore[i]=get_score(map_file,N,3)
-            	maxIndex=numpy.argmax(tempScore)
-            	results.append([numID,score[maxIndex], rotation[maxIndex], translation[maxIndex]])
-              
+        maxIndex=numpy.argmax(tempScore)
+        results.append([numID,tempScore[maxIndex], rotation[maxIndex], translation[maxIndex]])
+          
     #sort the fits according to its score, so that the best score is first(place 0) 
     sortedResults= sorted(results, key= lambda item:item[1], reverse= True)
     rc("close all")
@@ -302,4 +324,4 @@ def checkAllNoPowerfit(monomer_file,N,map_file, fits_dir):
 
             
 #main("4dyc.pdb",4,"map.mrc")
-#checkAllNoPowerfit("4dyc.pdb",4,"map.mrc", "highRes")
+checkAllNoPowerfit("4dyc.pdb",4,"4dyc_res6.mrc",6)
