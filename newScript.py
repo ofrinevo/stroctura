@@ -18,25 +18,32 @@ _FLOAT_EPS_4 = numpy.finfo(float).eps * 4.0
 
 
 def get_principal_axes(map_file):
-    rc("open "+map_file)
+     rc("open "+map_file)
     rc("measure inertia #0")
     saveReplyLog("log.txt")
     log= open("log.txt", 'r')
     for line in log:
-        if "v3" in line:
-            symVec=line.split()
+    	if "v1" in line:
+    		lineVec1=line.split()
+    	elif "v2" in line:
+            lineVec2=line.split()
+        elif "v3" in line:
+            lineVec3=line.split()
         elif "center" in line:
             centerLine=line.split()
             break
     rc("close all")
     for i in range(2,5):
-        symVec[i]=float(symVec[i])
+        lineVec1[i]=float(lineVec1[i])
+        lineVec2[i]=float(lineVec2[i])
+        lineVec3[i]=float(lineVec3[i])
         centerLine[i]=float(centerLine[i])
-    vecTup= (symVec[2], symVec[3], symVec[4])
+    vec1= (lineVec1[2], lineVec1[3], lineVec1[4])
+    vec2= (lineVec2[2], lineVec2[3], lineVec2[4])
+    vec3= (lineVec3[2], lineVec3[3], lineVec3[4])
     centerTup= (centerLine[2], centerLine[3], centerLine[4])
     
-    return [vecTup, centerTup] #array of the two tupples
-    #TODO get it into a file or whatever
+    return [vec1, vec2, vec3 centerTup]
 
 
 def runSegment(map_file):
@@ -115,7 +122,7 @@ symetry_axis - a tuple of the form (x,y,z)
 symetry_center -  a tuple of the form (x,y,z)
 """
 def cyclic_shift(monomer_file,fit_file,fits_dir,N,symetry_axis = (0,0,1) ,symetry_center = (0,0,0)):
-    os.system("mkdir cycledFits")
+   os.system("mkdir cycledFits")
     rc("open " + monomer_file)
     rc("cd "+fits_dir)
     transArray=[]
@@ -130,15 +137,14 @@ def cyclic_shift(monomer_file,fit_file,fits_dir,N,symetry_axis = (0,0,1) ,symetr
             print command
         rc(command)
         rc("match #" + str(i+1) + " #0 showMatrix true move false")
-        #FIX
-    filePath= "after"+fit_file
+    filePath= "after"+fit_file+" axis "+str(numOfAxis)
     rc("close 0")
     rc("combine #0,#1 close 1")
     rc("cd ..")
     saveReplyLog("transformsLog.txt")
-    #transform= findTranform(fit_file) 
+    transform= findTranform(fit_file) 
     
-    #return transform
+    return transform
         
 def findTranform(fit_file):
     firstMonomer=True
@@ -282,9 +288,11 @@ def checkAllNoPowerfit(monomer_file,N,map_file, fits_dir):
         if nameFile[:3]=="fit":            
             numID=nameFile[4:-4]
             rc("close all")
-            rotation,translation= cyclic_shift(monomer_file,nameFile,fits_dir,N,symAxis,center)
-            score=get_score(map_file,N,3)
-            results.append([numID,score, rotation, translation])
+            for i in range (3):
+            	rotation[i],translation[i]= cyclic_shift(monomer_file,nameFile,fits_dir,N,axes[i],center,i)
+            	tempScore[i]=get_score(map_file,N,3)
+            	maxIndex=numpy.argmax(tempScore)
+            	results.append([numID,score[maxIndex], rotation[maxIndex], translation[maxIndex]])
               
     #sort the fits according to its score, so that the best score is first(place 0) 
     sortedResults= sorted(results, key= lambda item:item[1], reverse= True)
