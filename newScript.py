@@ -59,11 +59,16 @@ def runSegment(map_file):
     path = "segmentationsDir/"+fname
     os.system("mkdir segmentationsDir")
     for reg in regs : #save each result in a different file
-        self.SaveRegsToMRC ( [reg], dmap, path % (reg.rid,) )
+        dialog.SaveRegsToMRC ( [reg], dmap, path % (reg.rid,) )
     #end of code for saving the results
         
     rc("close all")
-    
+
+def fitToSegment(monomer_file):
+    rc( "open " + monomer_file)
+    for segmentedMapFile in os.listdir( "segmentationsDir" ) : 
+        rc( "open segmentationsDir/" + segmentedMapFile)
+        rc( "fitmap #0 #1" )
 
 def powerfit(map_file,res,monomer_file, angle = 10, output_path = '',
              num_of_results = NUMOFRESULTS):
@@ -289,4 +294,4 @@ def checkAllNoPowerfit(monomer_file,N,map_file, fits_dir):
 
             
 #main("4dyc.pdb",4,"map.mrc")
-checkAllNoPowerfit("4dyc.pdb",4,"map.mrc", "highRes")
+#checkAllNoPowerfit("4dyc.pdb",4,"map.mrc", "highRes")
