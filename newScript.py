@@ -24,7 +24,7 @@ def get_principal_axes(map_file):
     log= open("log.txt", 'r')
     for line in log:
     	if "v1" in line:
-    		lineVec1=line.split()
+            lineVec1=line.split()
     	elif "v2" in line:
             lineVec2=line.split()
         elif "v3" in line:
