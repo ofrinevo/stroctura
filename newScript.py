@@ -18,7 +18,7 @@ _FLOAT_EPS_4 = numpy.finfo(float).eps * 4.0
 
 
 def get_principal_axes(map_file):
-     rc("open "+map_file)
+    rc("open "+map_file)
     rc("measure inertia #0")
     saveReplyLog("log.txt")
     log= open("log.txt", 'r')
