@@ -43,7 +43,7 @@ def get_principal_axes(map_file):
     vec3= (lineVec3[2], lineVec3[3], lineVec3[4])
     centerTup= (centerLine[2], centerLine[3], centerLine[4])
     
-    return [vec1, vec2, vec3 centerTup]
+    return [vec1, vec2, vec3, centerTup]
 
 
 def runSegment(map_file):
