@@ -1,377 +1,774 @@
-map.mrc opened
-Inertia axes for 4dyc.pdb
-	v1 =  0.144  0.828  0.541   a = 36.484   r1 = 16.447
-	v2 = -0.717  0.464 -0.520   b = 30.399   r2 = 18.759
-	v3 = -0.682 -0.313  0.661   c = 20.699   r3 = 21.238
-	center =   51.088   18.191   17.775
-afterfit_9.pdb
-.gitignore
-afterfit_3.pdb
-fit_7.pdb
-lcc.mrc
-afterfit_8.pdb
-powerfit.log
-afterfit_10.pdb
-fit_2.pdb
-afterfit_4.pdb
-fit_8.pdb
-fit_5.pdb
-afterfit_7.pdb
-solutions.out
-afterfit_1.pdb
-fit_10.pdb
-fit_4.pdb
-fit_9.pdb
-afterfit_2.pdb
-afterfit_5.pdb
-afterfit_6.pdb
-fit_3.pdb
-fit_6.pdb
-fit_1.pdb
-mapnew4.mrc
-cycledFits
+4dyc_res6.mrc opened
+Inertia axes for 4dyc_res6.mrc
+	v1 =  0.856  0.517  0.003   a = 35.875   r1 = 22.648
+	v2 = -0.517  0.856  0.001   b = 35.628   r2 = 22.747
+	v3 = -0.002 -0.002  1.000   c = 18.228   r3 = 27.781
+	center =   44.239  0.16416   18.894
+Select an open density map in the field above and press Segment!
+
+___________________________
+Segmenting 4dyc_res6.mrc, density threshold 0.541670
+ - made mask from 4dyc_res6.mrc
+ - ijk_to_xyz tr: 
+((2.0, 0.0, 0.0, -21.222), (0.0, 2.0, 0.0, -65.507004), (0.0, 0.0, 2.0, -36.155998))
+Calculated 373 watershed regions covering 2223 grid points
+Smoothing width 1 voxels, 129 regions
+Smoothing width 2 voxels, 29 regions
+Smoothing width 3 voxels, 7 regions
+Smoothing width 4 voxels, 4 regions
+--------------- sdev: 4.0 ---------------
+ -- showing ? 4 ? regions
+Showing 4 region surfaces
+373 watershed regions, smoothed 4 voxels to get 4 regions
+Bounds - 17 8 9 --> 43 36 42 --> 27 29 34
+Saving 1 regions to mrc file...
+origin: (-21.222, -65.507004, -36.155998)
+new origin: (12.777999877929688, -49.507003784179688, -18.155998229980469)
+Wrote 4dyc_res6_region_509.mrc
+Bounds - 8 22 9 --> 34 48 42 --> 27 27 34
+Saving 1 regions to mrc file...
+origin: (-21.222, -65.507004, -36.155998)
+new origin: (-5.2220001220703125, -21.507003784179688, -18.155998229980469)
+Wrote 4dyc_res6_region_515.mrc
+Bounds - 22 31 8 --> 49 57 42 --> 28 27 35
+Saving 1 regions to mrc file...
+origin: (-21.222, -65.507004, -36.155998)
+new origin: (22.777999877929688, -3.5070037841796875, -20.155998229980469)
+Wrote 4dyc_res6_region_516.mrc
+Bounds - 32 17 9 --> 57 44 42 --> 26 28 34
+Saving 1 regions to mrc file...
+origin: (-21.222, -65.507004, -36.155998)
+new origin: (42.777999877929688, -31.507003784179688, -18.155998229980469)
+Wrote 4dyc_res6_region_517.mrc
 #0, chain A: terminase small subunit
 #0, chain B: terminase small subunit
 4dyc.pdb opened
-afterfit_9.pdb
-afterfit_9.pdb opened
-Executing match ['#1', '#0'], no iteration
-map.mrc opened
-Inertia axes for 4dyc.pdb
-	v1 =  0.144  0.828  0.541   a = 36.484   r1 = 16.447
-	v2 = -0.717  0.464 -0.520   b = 30.399   r2 = 18.759
-	v3 = -0.682 -0.313  0.661   c = 20.699   r3 = 21.238
-	center =   51.088   18.191   17.775
-afterfit_9.pdb
-.gitignore
-afterfit_3.pdb
-fit_7.pdb
-lcc.mrc
-afterfit_8.pdb
-powerfit.log
-afterfit_10.pdb
-fit_2.pdb
-afterfit_4.pdb
-fit_8.pdb
-fit_5.pdb
-afterfit_7.pdb
-solutions.out
-afterfit_1.pdb
-fit_10.pdb
-fit_4.pdb
-fit_9.pdb
-afterfit_2.pdb
-afterfit_5.pdb
-afterfit_6.pdb
-fit_3.pdb
-fit_6.pdb
-fit_1.pdb
-mapnew4.mrc
-cycledFits
+4dyc_res6_region_517.mrc opened
+
+> fitmap #0 #1
+Fit molecule 4dyc.pdb (#0) to map 4dyc_res6_region_517.mrc using 2178 atoms
+  average map value = 0.02576, steps = 1632
+  shifted from previous position = 3.41
+  rotated from previous position = 9.76 degrees
+  atoms outside contour = 2178, contour level = 0.60724
+Position of 4dyc.pdb (#0) relative to 4dyc_res6_region_517.mrc (#1) coordinates:
+  Matrix rotation and translation
+     0.98792939  -0.13446669   0.07690405  -0.65391419
+     0.13947455   0.98815985  -0.06392928  -7.46309278
+    -0.06739714   0.07388377   0.99498684   3.96593956
+  Axis   0.40663774   0.42578196   0.80830407
+  Axis point  52.03418939  -8.81460848   0.00000000
+  Rotation angle (degrees)   9.75609394
+  Shift along axis  -0.23787131
+Wrote fitDir/model0.pdb into /home/elad/sadna/expr
 #0, chain A: terminase small subunit
 #0, chain B: terminase small subunit
 4dyc.pdb opened
-fit_7.pdb
-Model 1 (fit_7.pdb) appears to be a protein without secondary structure assignments.
-Automatically computing assignments using 'ksdssp' and parameter values:
-  energy cutoff -0.5
-  minimum helix length 3
-  minimum strand length 3
-Use command 'help ksdssp' for more information.
-fit_7.pdb opened
-Executing match ['#1', '#0'], no iteration
-Motion of #1 in #0 coordinate system
+4dyc_res6_region_515.mrc opened
+
+> fitmap #0 #1
+Fit molecule 4dyc.pdb (#0) to map 4dyc_res6_region_515.mrc using 2178 atoms
+  average map value = 0.04553, steps = 684
+  shifted from previous position = 39.6
+  rotated from previous position = 79.2 degrees
+  atoms outside contour = 2176, contour level = 0.60398
+Position of 4dyc.pdb (#0) relative to 4dyc_res6_region_515.mrc (#1) coordinates:
   Matrix rotation and translation
-    -0.70353264  -0.68699259   0.18188733  72.44911878
-    -0.07585340  -0.18188706  -0.98038939  43.79584217
-     0.70660320  -0.70353271   0.07585276  35.02343884
-  Axis   0.32504690  -0.61604896   0.71751529
-  Axis point  19.38529316  47.12205261   0.00000000
-  Rotation angle (degrees) 154.79413610
-  Shift along axis  21.69883179
-RMSD between 2178 atom pairs is 0.000 angstroms
-fit_7.pdb
-Model 2 (fit_7.pdb) appears to be a protein without secondary structure assignments.
-Automatically computing assignments using 'ksdssp' and parameter values:
-  energy cutoff -0.5
-  minimum helix length 3
-  minimum strand length 3
-Use command 'help ksdssp' for more information.
-fit_7.pdb opened
-turn -0.682,-0.313,0.661 90 center 51.088,18.191,17.775 models #2
-fit_7.pdb
-Model 3 (fit_7.pdb) appears to be a protein without secondary structure assignments.
-Automatically computing assignments using 'ksdssp' and parameter values:
-  energy cutoff -0.5
-  minimum helix length 3
-  minimum strand length 3
-Use command 'help ksdssp' for more information.
-fit_7.pdb opened
-turn -0.682,-0.313,0.661 180 center 51.088,18.191,17.775 models #3
-fit_7.pdb
-Model 4 (fit_7.pdb) appears to be a protein without secondary structure assignments.
-Automatically computing assignments using 'ksdssp' and parameter values:
-  energy cutoff -0.5
-  minimum helix length 3
-  minimum strand length 3
-Use command 'help ksdssp' for more information.
-fit_7.pdb opened
-turn -0.682,-0.313,0.661 270 center 51.088,18.191,17.775 models #4
-Executing match ['#4', '#0'], no iteration
-Motion of #4 in #0 coordinate system
-  Matrix rotation and translation
-    -0.95303547   0.08587360   0.29042920  69.20717999
-    -0.05923782   0.88758155  -0.45682587  14.18594082
-    -0.29700889  -0.45257565  -0.84080973  98.02448991
-  Axis   0.00702387   0.97079450  -0.23980974
-  Axis point  42.19608905   0.00000000  45.23756959
-  Rotation angle (degrees) 162.38885333
-  Shift along axis  -9.24949160
-Motion of #4 original coordinates in #0 coordinate system
-  Matrix rotation and translation
-    -0.70353262  -0.68699262   0.18188732  72.44911972
-    -0.07585339  -0.18188706  -0.98038939  43.79584201
-     0.70660323  -0.70353268   0.07585276  35.02343791
-  Axis   0.32504691  -0.61604895   0.71751529
-  Axis point  19.38529279  47.12205308   0.00000000
-  Rotation angle (degrees) 154.79413421
-  Shift along axis  21.69883227
-RMSD between 2178 atom pairs is 0.000 angstroms
-Remapping #2 chain A to C
-Remapping #3 chain A to D
-Remapping #4 chain A to E
-Remapping #2 chain B to F
-Remapping #3 chain B to G
-Remapping #4 chain B to H
-IndexError Exception in Tk callback
-  Function: <bound method MidasUI.processCommand of <Midas.midas_ui.MidasUI instance at 0x7fc361d32d40>> (type: <type 'instancemethod'>)
-  Module: <module 'Midas.midas_ui' from '/home/ofri/.local/UCSF-Chimera64-1.11/share/Midas/midas_ui.pyc'> (line: 406)
-  Args: (<Tkinter.Event instance at 0x7fc359f249e0>,)
-  Event type: KeyPress (type num: 2)
-Traceback (innermost last):
-  File "/home/ofri/.local/UCSF-Chimera64-1.11/lib/python2.7/site-packages/Pmw/Pmw_1_3_3/lib/PmwBase.py", line 1747, in __call__
-    return apply(self.func, args)
-  File "/home/ofri/.local/UCSF-Chimera64-1.11/share/Midas/midas_ui.py", line 416, in processCommand
-    midas_text.makeCommand(cmdText)
-  File "/home/ofri/.local/UCSF-Chimera64-1.11/share/Midas/midas_text.py", line 69, in makeCommand
-    f(c, args)
-  File "/home/ofri/.local/UCSF-Chimera64-1.11/share/Midas/midas_text.py", line 1606, in doOpen
-    modelArg, noprefs)
-  File "<string>", line 1, in <module>
-    None
-  File "/home/ofri/.local/UCSF-Chimera64-1.11/share/Midas/__init__.py", line 2208, in open
-    noprefs=noprefs)
-  File "/home/ofri/.local/UCSF-Chimera64-1.11/share/chimera/__init__.py", line 1919, in open
-    models = func(filename, *args, **kw)
-  File "/home/ofri/.local/UCSF-Chimera64-1.11/share/chimera/__init__.py", line 1291, in _openPython
-    loadFunc(sandboxName, fileName, f)
-  File "newScript.py", line 268, in <module>
-    checkAllNoPowerfit("4dyc.pdb",4,"map.mrc", "4dycPF1")
-  File "newScript.py", line 255, in checkAllNoPowerfit
-    rotation,translation= cyclic_shift(monomer_file,nameFile,fits_dir,N,symAxis,center)
-  File "newScript.py", line 106, in cyclic_shift
-    transform= findTranform(fit_file)
-  File "newScript.py", line 127, in findTranform
-    translationArray.append([firstRow[3], secRow[3], thirdRow[3]])
-IndexError: list index out of range
-
-================================================
-  Event contents:
-    char: 
-    delta: 0
-    height: ??
-    keycode: 36
-    keysym: Return
-    keysym_num: 65293
-    num: ??
-    send_event: False
-    serial: 228601
-    state: 16
-    time: 2497611
-    type: 2
-    widget: .140477185352624.140477136579832.140477133499712.140477133499928.140477133500000
-    width: ??
-    x: 387
-    x_root: 1081
-    y: 1
-    y_root: 135
-
-IndexError: list index out of range
-
-  File "newScript.py", line 127, in findTranform
-    translationArray.append([firstRow[3], secRow[3], thirdRow[3]])
-
-See reply log for Python traceback.
-
-
-map.mrc opened
-Inertia axes for combination
-	v1 =  0.121  0.843  0.524   a = 68.134   r1 = 33.193
-	v2 =  0.721 -0.437  0.537   b = 68.134   r2 = 33.193
-	v3 =  0.682  0.313 -0.661   c = 29.439   r3 = 43.092
-	center =   31.422   9.1656   36.835
-afterfit_9.pdb
-.gitignore
-afterfit_3.pdb
-fit_7.pdb
-lcc.mrc
-afterfit_8.pdb
-powerfit.log
-afterfit_10.pdb
-fit_2.pdb
-afterfit_4.pdb
-fit_8.pdb
-fit_5.pdb
-afterfit_7.pdb
-solutions.out
-afterfit_1.pdb
-fit_10.pdb
-fit_4.pdb
-fit_9.pdb
-afterfit_2.pdb
-afterfit_5.pdb
-afterfit_6.pdb
-fit_3.pdb
-fit_6.pdb
-fit_1.pdb
-mapnew4.mrc
-cycledFits
+     0.35038966   0.80842334  -0.47294691  -5.46274099
+    -0.92158172   0.20750879  -0.32806590  45.65996029
+    -0.16707549   0.55081013   0.81773711  -5.79922739
+  Axis   0.44740000  -0.15570668  -0.88067512
+  Axis point  26.67025044  25.72750020   0.00000000
+  Rotation angle (degrees)  79.17454022
+  Shift along axis  -4.44635597
+Wrote fitDir/model1.pdb into /home/elad/sadna/expr
 #0, chain A: terminase small subunit
 #0, chain B: terminase small subunit
 4dyc.pdb opened
-fit_7.pdb
-Model 1 (fit_7.pdb) appears to be a protein without secondary structure assignments.
-Automatically computing assignments using 'ksdssp' and parameter values:
-  energy cutoff -0.5
-  minimum helix length 3
-  minimum strand length 3
-Use command 'help ksdssp' for more information.
-fit_7.pdb opened
+4dyc_res6_region_509.mrc opened
+
+> fitmap #0 #1
+Fit molecule 4dyc.pdb (#0) to map 4dyc_res6_region_509.mrc using 2178 atoms
+  average map value = 0.06393, steps = 204
+  shifted from previous position = 37.9
+  rotated from previous position = 67.3 degrees
+  atoms outside contour = 2176, contour level = 0.59908
+Position of 4dyc.pdb (#0) relative to 4dyc_res6_region_509.mrc (#1) coordinates:
+  Matrix rotation and translation
+     0.92772990  -0.22390544  -0.29863620  -9.45464531
+    -0.17033826   0.45794075  -0.87251083   3.65082183
+     0.33211761   0.86032356   0.38670566 -22.47305838
+  Axis   0.93928706  -0.34190163   0.02903622
+  Axis point   0.00000000  17.83165129 -11.11867141
+  Rotation angle (degrees)  67.28247756
+  Shift along axis -10.78138052
+Wrote fitDir/model2.pdb into /home/elad/sadna/expr
+#0, chain A: terminase small subunit
+#0, chain B: terminase small subunit
+4dyc.pdb opened
+4dyc_res6_region_516.mrc opened
+
+> fitmap #0 #1
+Fit molecule 4dyc.pdb (#0) to map 4dyc_res6_region_516.mrc using 2178 atoms
+  average map value = 0.1528, steps = 44
+  shifted from previous position = 0.0769
+  rotated from previous position = 0.264 degrees
+  atoms outside contour = 2172, contour level = 0.59758
+Position of 4dyc.pdb (#0) relative to 4dyc_res6_region_516.mrc (#1) coordinates:
+  Matrix rotation and translation
+     0.99998945   0.00107142  -0.00446657   0.05259804
+    -0.00106958   0.99999934   0.00041314   0.03251148
+     0.00446701  -0.00040836   0.99998994  -0.14540241
+  Axis  -0.08906839  -0.96859781  -0.23213163
+  Axis point  32.70240770   0.00000000  11.65037752
+  Rotation angle (degrees)   0.26422653
+  Shift along axis  -0.00242287
+Wrote fitDir/model3.pdb into /home/elad/sadna/expr
+#0, chain A: terminase small subunit
+#0, chain B: terminase small subunit
+model1.pdb opened
+#1, chain A: terminase small subunit
+#1, chain B: terminase small subunit
+model1.pdb opened
+turn 0.856,0.517,0.003 90 center 44.239,0.16416,18.894 models #1
+#2, chain A: terminase small subunit
+#2, chain B: terminase small subunit
+model1.pdb opened
+turn 0.856,0.517,0.003 180 center 44.239,0.16416,18.894 models #2
+#3, chain A: terminase small subunit
+#3, chain B: terminase small subunit
+model1.pdb opened
+turn 0.856,0.517,0.003 270 center 44.239,0.16416,18.894 models #3
+Remapping #1 chain A to C
+Remapping #2 chain A to D
+Remapping #3 chain A to E
+Remapping #1 chain B to F
+Remapping #2 chain B to G
+Remapping #3 chain B to H
+Wrote aftermodel1.pdb axis 0.pdb into /home/elad/sadna/expr/fitDir/cycledFits
+4dyc_res6.mrc opened
+Correlation between 4dyc_res6.mrc and molmap combination res 6 = 0.5109, about mean = -0.004755
+#0, chain A: terminase small subunit
+#0, chain B: terminase small subunit
+model1.pdb opened
+#1, chain A: terminase small subunit
+#1, chain B: terminase small subunit
+model1.pdb opened
+turn -0.517,0.856,0.001 90 center 44.239,0.16416,18.894 models #1
+#2, chain A: terminase small subunit
+#2, chain B: terminase small subunit
+model1.pdb opened
+turn -0.517,0.856,0.001 180 center 44.239,0.16416,18.894 models #2
+#3, chain A: terminase small subunit
+#3, chain B: terminase small subunit
+model1.pdb opened
+turn -0.517,0.856,0.001 270 center 44.239,0.16416,18.894 models #3
+Remapping #1 chain A to C
+Remapping #2 chain A to D
+Remapping #3 chain A to E
+Remapping #1 chain B to F
+Remapping #2 chain B to G
+Remapping #3 chain B to H
+Wrote aftermodel1.pdb axis 1.pdb into /home/elad/sadna/expr/fitDir/cycledFits
+4dyc_res6.mrc opened
+Correlation between 4dyc_res6.mrc and molmap combination res 6 = 0.5914, about mean = -0.03894
+#0, chain A: terminase small subunit
+#0, chain B: terminase small subunit
+model1.pdb opened
+#1, chain A: terminase small subunit
+#1, chain B: terminase small subunit
+model1.pdb opened
+turn -0.002,-0.002,1.0 90 center 44.239,0.16416,18.894 models #1
+#2, chain A: terminase small subunit
+#2, chain B: terminase small subunit
+model1.pdb opened
+turn -0.002,-0.002,1.0 180 center 44.239,0.16416,18.894 models #2
+#3, chain A: terminase small subunit
+#3, chain B: terminase small subunit
+model1.pdb opened
+turn -0.002,-0.002,1.0 270 center 44.239,0.16416,18.894 models #3
+Remapping #1 chain A to C
+Remapping #2 chain A to D
+Remapping #3 chain A to E
+Remapping #1 chain B to F
+Remapping #2 chain B to G
+Remapping #3 chain B to H
+Wrote aftermodel1.pdb axis 2.pdb into /home/elad/sadna/expr/fitDir/cycledFits
+4dyc_res6.mrc opened
+Correlation between 4dyc_res6.mrc and molmap combination res 6 = 0.6881, about mean = 0.02341
+#0, chain A: terminase small subunit
+#0, chain B: terminase small subunit
+4dyc.pdb opened
+#1, chain A: terminase small subunit
+#1, chain B: terminase small subunit
+model1.pdb opened
+Calculating transformations and translations model1.pdb
 Executing match ['#1', '#0'], no iteration
 Motion of #1 in #0 coordinate system
   Matrix rotation and translation
-    -0.70353264  -0.68699259   0.18188733  72.44911878
-    -0.07585340  -0.18188706  -0.98038939  43.79584217
-     0.70660320  -0.70353271   0.07585276  35.02343884
-  Axis   0.32504690  -0.61604896   0.71751529
-  Axis point  19.38529316  47.12205261   0.00000000
-  Rotation angle (degrees) 154.79413610
-  Shift along axis  21.69883179
+     0.35038958  -0.92158176  -0.16707544  43.02456235
+     0.80842354   0.20750887   0.55080981  -1.86434412
+    -0.47294664  -0.32806574   0.81773734  17.13813014
+  Axis  -0.44739976   0.15570657   0.88067526
+  Axis point  26.67023496  25.72751362   0.00000000
+  Rotation angle (degrees)  79.17453394
+  Shift along axis  -4.44634216
 RMSD between 2178 atom pairs is 0.000 angstroms
-fit_7.pdb
-Model 2 (fit_7.pdb) appears to be a protein without secondary structure assignments.
-Automatically computing assignments using 'ksdssp' and parameter values:
-  energy cutoff -0.5
-  minimum helix length 3
-  minimum strand length 3
-Use command 'help ksdssp' for more information.
-fit_7.pdb opened
-turn -0.682,-0.313,0.661 90 center 51.088,18.191,17.775 models #2
-fit_7.pdb
-Model 3 (fit_7.pdb) appears to be a protein without secondary structure assignments.
-Automatically computing assignments using 'ksdssp' and parameter values:
-  energy cutoff -0.5
-  minimum helix length 3
-  minimum strand length 3
-Use command 'help ksdssp' for more information.
-fit_7.pdb opened
-turn -0.682,-0.313,0.661 180 center 51.088,18.191,17.775 models #3
-fit_7.pdb
-Model 4 (fit_7.pdb) appears to be a protein without secondary structure assignments.
-Automatically computing assignments using 'ksdssp' and parameter values:
-  energy cutoff -0.5
-  minimum helix length 3
-  minimum strand length 3
-Use command 'help ksdssp' for more information.
-fit_7.pdb opened
-turn -0.682,-0.313,0.661 270 center 51.088,18.191,17.775 models #4
+#2, chain A: terminase small subunit
+#2, chain B: terminase small subunit
+model1.pdb opened
+Calculating transformations and translations model1.pdb
+Executing match ['#2', '#0'], no iteration
+Motion of #2 in #0 coordinate system
+  Matrix rotation and translation
+     0.92224409   0.35038588  -0.16338779  17.44780968
+    -0.20970719   0.80842437   0.54997540  43.09386029
+     0.32479029  -0.47294797   0.81904303 -18.15384040
+  Axis  -0.80909802  -0.38613246  -0.44301480
+  Axis point   0.00000000 -31.57473922 -73.40692457
+  Rotation angle (degrees)  39.20804426
+  Shift along axis -22.71450661
+Motion of #2 original coordinates in #0 coordinate system
+  Matrix rotation and translation
+     0.35038957  -0.92158176  -0.16707544  43.02456241
+     0.80842353   0.20750886   0.55080983  -1.86434416
+    -0.47294666  -0.32806573   0.81773732  17.13813068
+  Axis  -0.44739977   0.15570659   0.88067526
+  Axis point  26.67023520  25.72751321   0.00000000
+  Rotation angle (degrees)  79.17453478
+  Shift along axis  -4.44634213
+RMSD between 2178 atom pairs is 0.000 angstroms
+#3, chain A: terminase small subunit
+#3, chain B: terminase small subunit
+model1.pdb opened
+Calculating transformations and translations model1.pdb
+Executing match ['#3', '#0'], no iteration
+Motion of #3 in #0 coordinate system
+  Matrix rotation and translation
+    -0.34972584   0.92224549  -0.16478801  73.65106652
+    -0.81061863  -0.20970396   0.54673731  69.90589812
+     0.46966932   0.32478839   0.82092827 -24.72971964
+  Axis  -0.11941343  -0.34135208  -0.93231925
+  Axis point  62.66148443  13.08903221   0.00000000
+  Rotation angle (degrees) 111.66941726
+  Shift along axis  -9.60145660
+Motion of #3 original coordinates in #0 coordinate system
+  Matrix rotation and translation
+     0.35038957  -0.92158177  -0.16707543  43.02456238
+     0.80842354   0.20750886   0.55080982  -1.86434414
+    -0.47294665  -0.32806572   0.81773733  17.13813044
+  Axis  -0.44739975   0.15570659   0.88067526
+  Axis point  26.67023502  25.72751340   0.00000000
+  Rotation angle (degrees)  79.17453440
+  Shift along axis  -4.44634172
+RMSD between 2178 atom pairs is 0.000 angstroms
+#4, chain A: terminase small subunit
+#4, chain B: terminase small subunit
+model1.pdb opened
+Calculating transformations and translations model1.pdb
 Executing match ['#4', '#0'], no iteration
 Motion of #4 in #0 coordinate system
   Matrix rotation and translation
-    -0.95303547   0.08587360   0.29042920  69.20717999
-    -0.05923782   0.88758155  -0.45682587  14.18594082
-    -0.29700889  -0.45257565  -0.84080973  98.02448991
-  Axis   0.00702387   0.97079450  -0.23980974
-  Axis point  42.19608905   0.00000000  45.23756959
-  Rotation angle (degrees) 162.38885333
-  Shift along axis  -9.24949160
+    -0.92158036  -0.34972217  -0.16847565  99.22781973
+     0.20751212  -0.81061947   0.54757172  24.94769252
+    -0.32806762   0.46967060   0.81962257  10.56225138
+  Axis  -0.13319871   0.27287726   0.95278335
+  Axis point  48.47344557  18.78328314   0.00000000
+  Rotation angle (degrees) 162.99683977
+  Shift along axis   3.65417752
 Motion of #4 original coordinates in #0 coordinate system
   Matrix rotation and translation
-    -0.70353262  -0.68699262   0.18188732  72.44911972
-    -0.07585339  -0.18188706  -0.98038939  43.79584201
-     0.70660323  -0.70353268   0.07585276  35.02343791
-  Axis   0.32504691  -0.61604895   0.71751529
-  Axis point  19.38529279  47.12205308   0.00000000
-  Rotation angle (degrees) 154.79413421
-  Shift along axis  21.69883227
+     0.35038959  -0.92158176  -0.16707543  43.02456209
+     0.80842354   0.20750888   0.55080980  -1.86434401
+    -0.47294663  -0.32806573   0.81773734  17.13812991
+  Axis  -0.44739975   0.15570657   0.88067527
+  Axis point  26.67023466  25.72751399   0.00000000
+  Rotation angle (degrees)  79.17453298
+  Shift along axis  -4.44634197
 RMSD between 2178 atom pairs is 0.000 angstroms
-Remapping #2 chain A to C
-Remapping #3 chain A to D
-Remapping #4 chain A to E
-Remapping #2 chain B to F
-Remapping #3 chain B to G
-Remapping #4 chain B to H
-['-0.70353264', '-0.68699259', '0.18188733', '72.44911878']
-['energy', 'cutoff', '-0.5']
-IndexError Exception in Tk callback
-  Function: <bound method MidasUI.processCommand of <Midas.midas_ui.MidasUI instance at 0x7fc361d32d40>> (type: <type 'instancemethod'>)
-  Module: <module 'Midas.midas_ui' from '/home/ofri/.local/UCSF-Chimera64-1.11/share/Midas/midas_ui.pyc'> (line: 406)
-  Args: (<Tkinter.Event instance at 0x7fc3627c89e0>,)
-  Event type: KeyPress (type num: 2)
-Traceback (innermost last):
-  File "/home/ofri/.local/UCSF-Chimera64-1.11/lib/python2.7/site-packages/Pmw/Pmw_1_3_3/lib/PmwBase.py", line 1747, in __call__
-    return apply(self.func, args)
-  File "/home/ofri/.local/UCSF-Chimera64-1.11/share/Midas/midas_ui.py", line 416, in processCommand
-    midas_text.makeCommand(cmdText)
-  File "/home/ofri/.local/UCSF-Chimera64-1.11/share/Midas/midas_text.py", line 69, in makeCommand
-    f(c, args)
-  File "/home/ofri/.local/UCSF-Chimera64-1.11/share/Midas/midas_text.py", line 1606, in doOpen
-    modelArg, noprefs)
-  File "<string>", line 1, in <module>
-    None
-  File "/home/ofri/.local/UCSF-Chimera64-1.11/share/Midas/__init__.py", line 2208, in open
-    noprefs=noprefs)
-  File "/home/ofri/.local/UCSF-Chimera64-1.11/share/chimera/__init__.py", line 1919, in open
-    models = func(filename, *args, **kw)
-  File "/home/ofri/.local/UCSF-Chimera64-1.11/share/chimera/__init__.py", line 1291, in _openPython
-    loadFunc(sandboxName, fileName, f)
-  File "newScript.py", line 269, in <module>
-    checkAllNoPowerfit("4dyc.pdb",4,"map.mrc", "4dycPF1")
-  File "newScript.py", line 256, in checkAllNoPowerfit
-    rotation,translation= cyclic_shift(monomer_file,nameFile,fits_dir,N,symAxis,center)
-  File "newScript.py", line 106, in cyclic_shift
-    transform= findTranform(fit_file)
-  File "newScript.py", line 128, in findTranform
-    translationArray.append([firstRow[3], secRow[3], thirdRow[3]])
-IndexError: list index out of range
-
-================================================
-  Event contents:
-    char: 
-    delta: 0
-    height: ??
-    keycode: 36
-    keysym: Return
-    keysym_num: 65293
-    num: ??
-    send_event: False
-    serial: 239170
-    state: 16
-    time: 2574046
-    type: 2
-    widget: .140477185352624.140477136579832.140477133499712.140477133499928.140477133500000
-    width: ??
-    x: 452
-    x_root: 1146
-    y: -38
-    y_root: 96
-
-IndexError: list index out of range
-
-  File "newScript.py", line 128, in findTranform
-    translationArray.append([firstRow[3], secRow[3], thirdRow[3]])
-
-See reply log for Python traceback.
-
-
-
+#0, chain A: terminase small subunit
+#0, chain B: terminase small subunit
+model2.pdb opened
+#1, chain A: terminase small subunit
+#1, chain B: terminase small subunit
+model2.pdb opened
+turn 0.856,0.517,0.003 90 center 44.239,0.16416,18.894 models #1
+#2, chain A: terminase small subunit
+#2, chain B: terminase small subunit
+model2.pdb opened
+turn 0.856,0.517,0.003 180 center 44.239,0.16416,18.894 models #2
+#3, chain A: terminase small subunit
+#3, chain B: terminase small subunit
+model2.pdb opened
+turn 0.856,0.517,0.003 270 center 44.239,0.16416,18.894 models #3
+Remapping #1 chain A to C
+Remapping #2 chain A to D
+Remapping #3 chain A to E
+Remapping #1 chain B to F
+Remapping #2 chain B to G
+Remapping #3 chain B to H
+Wrote aftermodel2.pdb axis 0.pdb into /home/elad/sadna/expr/fitDir/cycledFits
+4dyc_res6.mrc opened
+Correlation between 4dyc_res6.mrc and molmap combination res 6 = 0.538, about mean = -0.004634
+#0, chain A: terminase small subunit
+#0, chain B: terminase small subunit
+model2.pdb opened
+#1, chain A: terminase small subunit
+#1, chain B: terminase small subunit
+model2.pdb opened
+turn -0.517,0.856,0.001 90 center 44.239,0.16416,18.894 models #1
+#2, chain A: terminase small subunit
+#2, chain B: terminase small subunit
+model2.pdb opened
+turn -0.517,0.856,0.001 180 center 44.239,0.16416,18.894 models #2
+#3, chain A: terminase small subunit
+#3, chain B: terminase small subunit
+model2.pdb opened
+turn -0.517,0.856,0.001 270 center 44.239,0.16416,18.894 models #3
+Remapping #1 chain A to C
+Remapping #2 chain A to D
+Remapping #3 chain A to E
+Remapping #1 chain B to F
+Remapping #2 chain B to G
+Remapping #3 chain B to H
+Wrote aftermodel2.pdb axis 1.pdb into /home/elad/sadna/expr/fitDir/cycledFits
+4dyc_res6.mrc opened
+Correlation between 4dyc_res6.mrc and molmap combination res 6 = 0.6659, about mean = -0.005798
+#0, chain A: terminase small subunit
+#0, chain B: terminase small subunit
+model2.pdb opened
+#1, chain A: terminase small subunit
+#1, chain B: terminase small subunit
+model2.pdb opened
+turn -0.002,-0.002,1.0 90 center 44.239,0.16416,18.894 models #1
+#2, chain A: terminase small subunit
+#2, chain B: terminase small subunit
+model2.pdb opened
+turn -0.002,-0.002,1.0 180 center 44.239,0.16416,18.894 models #2
+#3, chain A: terminase small subunit
+#3, chain B: terminase small subunit
+model2.pdb opened
+turn -0.002,-0.002,1.0 270 center 44.239,0.16416,18.894 models #3
+Remapping #1 chain A to C
+Remapping #2 chain A to D
+Remapping #3 chain A to E
+Remapping #1 chain B to F
+Remapping #2 chain B to G
+Remapping #3 chain B to H
+Wrote aftermodel2.pdb axis 2.pdb into /home/elad/sadna/expr/fitDir/cycledFits
+4dyc_res6.mrc opened
+Correlation between 4dyc_res6.mrc and molmap combination res 6 = 0.8194, about mean = 0.06228
+#0, chain A: terminase small subunit
+#0, chain B: terminase small subunit
+4dyc.pdb opened
+#1, chain A: terminase small subunit
+#1, chain B: terminase small subunit
+model2.pdb opened
+Calculating transformations and translations model2.pdb
+Executing match ['#1', '#0'], no iteration
+Motion of #1 in #0 coordinate system
+  Matrix rotation and translation
+     0.92772996  -0.17033756   0.33211780  16.85693315
+    -0.22390590   0.45794076   0.86032343  15.54530684
+    -0.29863567  -0.87251096   0.38670578   9.05232575
+  Axis  -0.93928710   0.34190145  -0.02903685
+  Axis point   0.00000000  17.83163858 -11.11869586
+  Rotation angle (degrees)  67.28247168
+  Shift along axis -10.78138794
+RMSD between 2178 atom pairs is 0.001 angstroms
+#2, chain A: terminase small subunit
+#2, chain B: terminase small subunit
+model2.pdb opened
+Calculating transformations and translations model2.pdb
+Executing match ['#2', '#0'], no iteration
+Motion of #2 in #0 coordinate system
+  Matrix rotation and translation
+     0.16901143   0.92772929   0.33279648  50.22880116
+    -0.46137926  -0.22390406   0.85848480  26.19756147
+     0.87095598  -0.29863913   0.39019271 -42.84932770
+  Axis  -0.61343180  -0.28529714  -0.73641494
+  Axis point  54.62948366  -0.75800585   0.00000000
+  Rotation angle (degrees) 109.41147077
+  Shift along axis  -6.73114798
+Motion of #2 original coordinates in #0 coordinate system
+  Matrix rotation and translation
+     0.92772997  -0.17033754   0.33211778  16.85693336
+    -0.22390590   0.45794075   0.86032344  15.54530656
+    -0.29863565  -0.87251097   0.38670578   9.05232502
+  Axis  -0.93928711   0.34190143  -0.02903686
+  Axis point   0.00000000  17.83163755 -11.11869599
+  Rotation angle (degrees)  67.28247170
+  Shift along axis -10.78138870
+RMSD between 2178 atom pairs is 0.001 angstroms
+#3, chain A: terminase small subunit
+#3, chain B: terminase small subunit
+model2.pdb opened
+Calculating transformations and translations model2.pdb
+Executing match ['#3', '#0'], no iteration
+Motion of #3 in #0 coordinate system
+  Matrix rotation and translation
+    -0.92905236   0.16901516   0.32908294  99.00075898
+     0.22046652  -0.46138012   0.85937355  -3.94442247
+     0.29707948   0.87095480   0.39138411 -17.67611654
+  Axis   0.18773464   0.51878325   0.83403815
+  Axis point  51.53484719   4.43760241   0.00000000
+  Rotation angle (degrees) 178.23244679
+  Shift along axis   1.79701639
+Motion of #3 original coordinates in #0 coordinate system
+  Matrix rotation and translation
+     0.92772996  -0.17033756   0.33211780  16.85693313
+    -0.22390591   0.45794073   0.86032345  15.54530658
+    -0.29863566  -0.87251098   0.38670575   9.05232592
+  Axis  -0.93928710   0.34190144  -0.02903686
+  Axis point   0.00000000  17.83163810 -11.11869494
+  Rotation angle (degrees)  67.28247397
+  Shift along axis -10.78138825
+RMSD between 2178 atom pairs is 0.001 angstroms
+#4, chain A: terminase small subunit
+#4, chain B: terminase small subunit
+model2.pdb opened
+Calculating transformations and translations model2.pdb
+Executing match ['#4', '#0'], no iteration
+Motion of #4 in #0 coordinate system
+  Matrix rotation and translation
+    -0.17033383  -0.92905170   0.32840422  65.62889256
+     0.45793986   0.22046466   0.86121218 -14.59667550
+    -0.87251216   0.29708295   0.38789721  34.22553680
+  Axis  -0.29390552   0.62566506   0.72260831
+  Axis point  46.14487117  11.34444446   0.00000000
+  Rotation angle (degrees) 106.31906006
+  Shift along axis  -3.68966622
+Motion of #4 original coordinates in #0 coordinate system
+  Matrix rotation and translation
+     0.92772997  -0.17033755   0.33211777  16.85693339
+    -0.22390589   0.45794074   0.86032344  15.54530616
+    -0.29863564  -0.87251097   0.38670578   9.05232505
+  Axis  -0.93928711   0.34190143  -0.02903685
+  Axis point   0.00000000  17.83163730 -11.11869546
+  Rotation angle (degrees)  67.28247206
+  Shift along axis -10.78138893
+RMSD between 2178 atom pairs is 0.001 angstroms
+#0, chain A: terminase small subunit
+#0, chain B: terminase small subunit
+model0.pdb opened
+#1, chain A: terminase small subunit
+#1, chain B: terminase small subunit
+model0.pdb opened
+turn 0.856,0.517,0.003 90 center 44.239,0.16416,18.894 models #1
+#2, chain A: terminase small subunit
+#2, chain B: terminase small subunit
+model0.pdb opened
+turn 0.856,0.517,0.003 180 center 44.239,0.16416,18.894 models #2
+#3, chain A: terminase small subunit
+#3, chain B: terminase small subunit
+model0.pdb opened
+turn 0.856,0.517,0.003 270 center 44.239,0.16416,18.894 models #3
+Remapping #1 chain A to C
+Remapping #2 chain A to D
+Remapping #3 chain A to E
+Remapping #1 chain B to F
+Remapping #2 chain B to G
+Remapping #3 chain B to H
+Wrote aftermodel0.pdb axis 0.pdb into /home/elad/sadna/expr/fitDir/cycledFits
+4dyc_res6.mrc opened
+Correlation between 4dyc_res6.mrc and molmap combination res 6 = 0.5899, about mean = -0.01194
+#0, chain A: terminase small subunit
+#0, chain B: terminase small subunit
+model0.pdb opened
+#1, chain A: terminase small subunit
+#1, chain B: terminase small subunit
+model0.pdb opened
+turn -0.517,0.856,0.001 90 center 44.239,0.16416,18.894 models #1
+#2, chain A: terminase small subunit
+#2, chain B: terminase small subunit
+model0.pdb opened
+turn -0.517,0.856,0.001 180 center 44.239,0.16416,18.894 models #2
+#3, chain A: terminase small subunit
+#3, chain B: terminase small subunit
+model0.pdb opened
+turn -0.517,0.856,0.001 270 center 44.239,0.16416,18.894 models #3
+Remapping #1 chain A to C
+Remapping #2 chain A to D
+Remapping #3 chain A to E
+Remapping #1 chain B to F
+Remapping #2 chain B to G
+Remapping #3 chain B to H
+Wrote aftermodel0.pdb axis 1.pdb into /home/elad/sadna/expr/fitDir/cycledFits
+4dyc_res6.mrc opened
+Correlation between 4dyc_res6.mrc and molmap combination res 6 = 0.6966, about mean = -0.006631
+#0, chain A: terminase small subunit
+#0, chain B: terminase small subunit
+model0.pdb opened
+#1, chain A: terminase small subunit
+#1, chain B: terminase small subunit
+model0.pdb opened
+turn -0.002,-0.002,1.0 90 center 44.239,0.16416,18.894 models #1
+#2, chain A: terminase small subunit
+#2, chain B: terminase small subunit
+model0.pdb opened
+turn -0.002,-0.002,1.0 180 center 44.239,0.16416,18.894 models #2
+#3, chain A: terminase small subunit
+#3, chain B: terminase small subunit
+model0.pdb opened
+turn -0.002,-0.002,1.0 270 center 44.239,0.16416,18.894 models #3
+Remapping #1 chain A to C
+Remapping #2 chain A to D
+Remapping #3 chain A to E
+Remapping #1 chain B to F
+Remapping #2 chain B to G
+Remapping #3 chain B to H
+Wrote aftermodel0.pdb axis 2.pdb into /home/elad/sadna/expr/fitDir/cycledFits
+4dyc_res6.mrc opened
+Correlation between 4dyc_res6.mrc and molmap combination res 6 = 0.8888, about mean = -0.01291
+#0, chain A: terminase small subunit
+#0, chain B: terminase small subunit
+4dyc.pdb opened
+#1, chain A: terminase small subunit
+#1, chain B: terminase small subunit
+model0.pdb opened
+Calculating transformations and translations model0.pdb
+Executing match ['#1', '#0'], no iteration
+Motion of #1 in #0 coordinate system
+  Matrix rotation and translation
+     0.98792939   0.13947472  -0.06739683   1.95420594
+    -0.13446686   0.98815981   0.07388407   6.99378403
+     0.07690379  -0.06392960   0.99498684  -4.37286838
+  Axis  -0.40663924  -0.42577993  -0.80830438
+  Axis point  52.03418136  -8.81448484   0.00000000
+  Rotation angle (degrees)   9.75610200
+  Shift along axis  -0.23786102
+RMSD between 2178 atom pairs is 0.000 angstroms
+#2, chain A: terminase small subunit
+#2, chain B: terminase small subunit
+model0.pdb opened
+Calculating transformations and translations model0.pdb
+Executing match ['#2', '#0'], no iteration
+Motion of #2 in #0 coordinate system
+  Matrix rotation and translation
+    -0.13920006   0.98792994  -0.06795418  51.68853376
+    -0.98844798  -0.13446290   0.06993086  45.03203651
+     0.05994947   0.07690355   0.99523460  -3.65062655
+  Axis   0.00352063  -0.06458069  -0.99790628
+  Axis point  45.47673363   0.12327957   0.00000000
+  Rotation angle (degrees)  98.00237693
+  Shift along axis   0.91675909
+Motion of #2 original coordinates in #0 coordinate system
+  Matrix rotation and translation
+     0.98792939   0.13947472  -0.06739683   1.95420598
+    -0.13446685   0.98815981   0.07388407   6.99378396
+     0.07690379  -0.06392960   0.99498684  -4.37286844
+  Axis  -0.40663924  -0.42577994  -0.80830438
+  Axis point  52.03418152  -8.81448533   0.00000000
+  Rotation angle (degrees)   9.75610189
+  Shift along axis  -0.23786103
+RMSD between 2178 atom pairs is 0.000 angstroms
+#3, chain A: terminase small subunit
+#3, chain B: terminase small subunit
+model0.pdb opened
+Calculating transformations and translations model0.pdb
+Executing match ['#3', '#0'], no iteration
+Motion of #3 in #0 coordinate system
+  Matrix rotation and translation
+    -0.98765078  -0.13919612  -0.07190533  89.48282717
+     0.13417815  -0.98844851   0.07046814  -4.50178208
+    -0.08088361   0.05994979   0.99491902   2.58843390
+  Axis  -0.03842687   0.03280050   0.99872294
+  Axis point  44.94503629   0.78538408   0.00000000
+  Rotation angle (degrees) 172.13370065
+  Shift along axis  -1.00107774
+Motion of #3 original coordinates in #0 coordinate system
+  Matrix rotation and translation
+     0.98792938   0.13947472  -0.06739683   1.95420599
+    -0.13446686   0.98815981   0.07388407   6.99378416
+     0.07690380  -0.06392960   0.99498684  -4.37286857
+  Axis  -0.40663924  -0.42577994  -0.80830438
+  Axis point  52.03418092  -8.81448465   0.00000000
+  Rotation angle (degrees)   9.75610233
+  Shift along axis  -0.23786104
+RMSD between 2178 atom pairs is 0.000 angstroms
+#4, chain A: terminase small subunit
+#4, chain B: terminase small subunit
+model0.pdb opened
+Calculating transformations and translations model0.pdb
+Executing match ['#4', '#0'], no iteration
+Motion of #4 in #0 coordinate system
+  Matrix rotation and translation
+     0.13947867  -0.98765134  -0.07134797  39.74849928
+     0.98815927   0.13417420   0.07442134 -42.54003429
+    -0.06392928  -0.08088335   0.99467127   1.86619166
+  Axis  -0.07836078  -0.00374319   0.99691804
+  Axis point  44.36893347   1.50080971   0.00000000
+  Rotation angle (degrees)  82.28983095
+  Shift along axis  -1.09504787
+Motion of #4 original coordinates in #0 coordinate system
+  Matrix rotation and translation
+     0.98792939   0.13947472  -0.06739682   1.95420582
+    -0.13446686   0.98815981   0.07388406   6.99378410
+     0.07690379  -0.06392960   0.99498684  -4.37286815
+  Axis  -0.40663923  -0.42577991  -0.80830440
+  Axis point  52.03418233  -8.81448448   0.00000000
+  Rotation angle (degrees)   9.75610172
+  Shift along axis  -0.23786091
+RMSD between 2178 atom pairs is 0.000 angstroms
+#0, chain A: terminase small subunit
+#0, chain B: terminase small subunit
+model3.pdb opened
+#1, chain A: terminase small subunit
+#1, chain B: terminase small subunit
+model3.pdb opened
+turn 0.856,0.517,0.003 90 center 44.239,0.16416,18.894 models #1
+#2, chain A: terminase small subunit
+#2, chain B: terminase small subunit
+model3.pdb opened
+turn 0.856,0.517,0.003 180 center 44.239,0.16416,18.894 models #2
+#3, chain A: terminase small subunit
+#3, chain B: terminase small subunit
+model3.pdb opened
+turn 0.856,0.517,0.003 270 center 44.239,0.16416,18.894 models #3
+Remapping #1 chain A to C
+Remapping #2 chain A to D
+Remapping #3 chain A to E
+Remapping #1 chain B to F
+Remapping #2 chain B to G
+Remapping #3 chain B to H
+Wrote aftermodel3.pdb axis 0.pdb into /home/elad/sadna/expr/fitDir/cycledFits
+4dyc_res6.mrc opened
+Correlation between 4dyc_res6.mrc and molmap combination res 6 = 0.623, about mean = 0.02114
+#0, chain A: terminase small subunit
+#0, chain B: terminase small subunit
+model3.pdb opened
+#1, chain A: terminase small subunit
+#1, chain B: terminase small subunit
+model3.pdb opened
+turn -0.517,0.856,0.001 90 center 44.239,0.16416,18.894 models #1
+#2, chain A: terminase small subunit
+#2, chain B: terminase small subunit
+model3.pdb opened
+turn -0.517,0.856,0.001 180 center 44.239,0.16416,18.894 models #2
+#3, chain A: terminase small subunit
+#3, chain B: terminase small subunit
+model3.pdb opened
+turn -0.517,0.856,0.001 270 center 44.239,0.16416,18.894 models #3
+Remapping #1 chain A to C
+Remapping #2 chain A to D
+Remapping #3 chain A to E
+Remapping #1 chain B to F
+Remapping #2 chain B to G
+Remapping #3 chain B to H
+Wrote aftermodel3.pdb axis 1.pdb into /home/elad/sadna/expr/fitDir/cycledFits
+4dyc_res6.mrc opened
+Correlation between 4dyc_res6.mrc and molmap combination res 6 = 0.7432, about mean = 0.02451
+#0, chain A: terminase small subunit
+#0, chain B: terminase small subunit
+model3.pdb opened
+#1, chain A: terminase small subunit
+#1, chain B: terminase small subunit
+model3.pdb opened
+turn -0.002,-0.002,1.0 90 center 44.239,0.16416,18.894 models #1
+#2, chain A: terminase small subunit
+#2, chain B: terminase small subunit
+model3.pdb opened
+turn -0.002,-0.002,1.0 180 center 44.239,0.16416,18.894 models #2
+#3, chain A: terminase small subunit
+#3, chain B: terminase small subunit
+model3.pdb opened
+turn -0.002,-0.002,1.0 270 center 44.239,0.16416,18.894 models #3
+Remapping #1 chain A to C
+Remapping #2 chain A to D
+Remapping #3 chain A to E
+Remapping #1 chain B to F
+Remapping #2 chain B to G
+Remapping #3 chain B to H
+Wrote aftermodel3.pdb axis 2.pdb into /home/elad/sadna/expr/fitDir/cycledFits
+4dyc_res6.mrc opened
+Correlation between 4dyc_res6.mrc and molmap combination res 6 = 0.9993, about mean = 0.8681
+#0, chain A: terminase small subunit
+#0, chain B: terminase small subunit
+4dyc.pdb opened
+#1, chain A: terminase small subunit
+#1, chain B: terminase small subunit
+model3.pdb opened
+Calculating transformations and translations model3.pdb
+Executing match ['#1', '#0'], no iteration
+Motion of #1 in #0 coordinate system
+  Matrix rotation and translation
+     0.99998945  -0.00106900   0.00446728  -0.05192220
+     0.00107083   0.99999934  -0.00040835  -0.03259813
+    -0.00446684   0.00041313   0.99998994   0.14562934
+  Axis   0.08906384   0.96863008   0.23199872
+  Axis point  32.70142024   0.00000000  11.65186292
+  Rotation angle (degrees)   0.26423385
+  Shift along axis  -0.00241409
+RMSD between 2178 atom pairs is 0.000 angstroms
+#2, chain A: terminase small subunit
+#2, chain B: terminase small subunit
+model3.pdb opened
+Calculating transformations and translations model3.pdb
+Executing match ['#2', '#0'], no iteration
+Motion of #2 in #0 coordinate system
+  Matrix rotation and translation
+     0.00105512   0.99998945   0.00447153  43.97551955
+    -0.99998971   0.00107483  -0.00440832  44.49287796
+    -0.00441308  -0.00446684   0.99998029   0.14423425
+  Axis  -0.00002926   0.00444231  -0.99999013
+  Axis point  44.25778556   0.23556963   0.00000000
+  Rotation angle (degrees)  89.93954603
+  Shift along axis   0.05213161
+Motion of #2 original coordinates in #0 coordinate system
+  Matrix rotation and translation
+     0.99998945  -0.00106900   0.00446728  -0.05192220
+     0.00107083   0.99999934  -0.00040835  -0.03259813
+    -0.00446684   0.00041313   0.99998994   0.14562934
+  Axis   0.08906383   0.96863008   0.23199872
+  Axis point  32.70142045   0.00000000  11.65186283
+  Rotation angle (degrees)   0.26423385
+  Shift along axis  -0.00241410
+RMSD between 2178 atom pairs is 0.000 angstroms
+#3, chain A: terminase small subunit
+#3, chain B: terminase small subunit
+model3.pdb opened
+Calculating transformations and translations model3.pdb
+Executing match ['#3', '#0'], no iteration
+Motion of #3 in #0 coordinate system
+  Matrix rotation and translation
+    -0.99999933   0.00105912   0.00047156  88.50072716
+    -0.00106119  -0.99998970  -0.00441259   0.46569491
+     0.00046688  -0.00441309   0.99999015  -0.07184571
+  Axis  -0.00023461   0.00220643  -0.99999754
+  Axis point  44.25049541   0.20931191   0.00000000
+  Rotation angle (degrees) 179.93925734
+  Shift along axis   0.05210967
+Motion of #3 original coordinates in #0 coordinate system
+  Matrix rotation and translation
+     0.99998945  -0.00106900   0.00446728  -0.05192220
+     0.00107083   0.99999934  -0.00040835  -0.03259813
+    -0.00446685   0.00041313   0.99998994   0.14562935
+  Axis   0.08906380   0.96863008   0.23199870
+  Axis point  32.70142148   0.00000000  11.65186338
+  Rotation angle (degrees)   0.26423386
+  Shift along axis  -0.00241409
+RMSD between 2178 atom pairs is 0.000 angstroms
+#4, chain A: terminase small subunit
+#4, chain B: terminase small subunit
+model3.pdb opened
+Calculating transformations and translations model3.pdb
+Executing match ['#4', '#0'], no iteration
+Motion of #4 in #0 coordinate system
+  Matrix rotation and translation
+    -0.00106500  -0.99999932   0.00046731  44.47328540
+     0.99999935  -0.00106519  -0.00041262 -44.05978117
+     0.00041312   0.00046688   0.99999981  -0.07045062
+  Axis   0.00043975   0.00002710   0.99999990
+  Axis point  44.24309662   0.18309296   0.00000000
+  Rotation angle (degrees)  90.06103105
+  Shift along axis  -0.05208750
+Motion of #4 original coordinates in #0 coordinate system
+  Matrix rotation and translation
+     0.99998945  -0.00106900   0.00446728  -0.05192221
+     0.00107083   0.99999934  -0.00040835  -0.03259812
+    -0.00446685   0.00041313   0.99998994   0.14562935
+  Axis   0.08906384   0.96863008   0.23199869
+  Axis point  32.70142071   0.00000000  11.65186357
+  Rotation angle (degrees)   0.26423386
+  Shift along axis  -0.00241409
+RMSD between 2178 atom pairs is 0.000 angstroms
