@@ -157,12 +157,12 @@ def cyclicForOutput(monomer_file,fit_file,fits_dir,N,symetry_axis,symetry_center
 	for i in range(N):
         	rc("open " + fit_file)
         	if i == 0: 
-			print "Calculating transformations and translations " + str(fit_file) #important! Do not remove
+			print "Calculating transformations and translations " + fit_file #important! Do not remove
 			rc("match #" + str(i+1) + " #0 showMatrix true move false")
             		continue
         	command = get_turn_command(i*360/N,symetry_axis,symetry_center,i+1) #changed for output
 		rc(command)
-		print "Calculating transformations and translations " + str(fit_file) #important! Do not remove
+		print "Calculating transformations and translations " + fit_file #important! Do not remove
 		rc("match #" + str(i+1) + " #0 showMatrix true move false")
 	rc("cd ..")
 	saveReplyLog("transformsLog.txt")
@@ -176,7 +176,7 @@ def findTransform(fit_file):
     transFile= open("transformsLog.txt", 'r')
     rotationsMats=[]
     translationArray=[]
-    checkLine= "Calculating transformations and translations " + str(fit_file)
+    checkLine= "Calculating transformations and translations " + fit_file
     for line in transFile:
         if checkLine in line:
 	    transFile.next()
