@@ -120,53 +120,66 @@ def get_turn_command(deg,symetry_axis,symetry_center,model_index):
     return command
 
 """
-monomer_file - location of the original monomer
 fit_file- location of the fitted monomer to the map by powerfit
 fits_dir- the directory with the fit-files
 N - number of symmetry
 symetry_axis - a tuple of the form (x,y,z)
 symetry_center -  a tuple of the form (x,y,z)
+numOfAxis- the index of symmetry axis (1/2/3)
 """
-def cyclic_shift(monomer_file,fit_file,fits_dir,N,symetry_axis ,symetry_center,numOfAxis):
-    #rc("open " + monomer_file)
+def cyclic_shift(fit_file,fits_dir,N,symetry_axis ,symetry_center,numOfAxis):
+
     rc("cd "+fits_dir)
-    #transArray=[]
     for i in range(N):
         #print fit_file
         rc("open " + fit_file)
         if i == 0: 
-##            rc("match #" + str(i+1) + " #0 showMatrix true move false")
             continue
         command = get_turn_command(i*360/N,symetry_axis,symetry_center,i) #changed for output
         if DEBUG:
             print command
         
         rc(command)
-        #rc("match #" + str(i+1) + " #0 showMatrix true move false")
     filePath= "after"+fit_file+" axis "+str(numOfAxis)
     os.system("mkdir cycledFits")
     #rc("close 0")
     rc("cd cycledFits")
     rc("combine #0,#1 close 1")
-    rc("write format pdb #"+ str(N) + " " + filePath+".pdb")
+    rc("write format pdb #"+ str(N) + " " + filePath+".pdb") #why save the map? we keep it open to immediately calc score
     rc("cd ..")
     rc("cd ..")
-    #saveReplyLog("transformsLog.txt")
-##    transform= findTranform(fit_file) 
-##    
-##    return transform
-        
-def findTranform(fit_file):
-    firstMonomer=True
+
+
+def cyclicForOutput(monomer_file,fit_file,fits_dir,N,symetry_axis,symetry_center):
+
+	rc("open " + monomer_file) 
+	rc("cd " + fits_dir)
+	for i in range(N):
+        	rc("open " + fit_file)
+        	if i == 0: 
+			print "Calculating transformations and translations " + str(fit_file) #important! Do not remove
+			rc("match #" + str(i+1) + " #0 showMatrix true move false")
+            		continue
+        	command = get_turn_command(i*360/N,symetry_axis,symetry_center,i+1) #changed for output
+		rc(command)
+		print "Calculating transformations and translations " + str(fit_file) #important! Do not remove
+		rc("match #" + str(i+1) + " #0 showMatrix true move false")
+	rc("cd ..")
+	saveReplyLog("transformsLog.txt")
+        transform= findTransform(fit_file)
+	rc("close all") 
+
+	return transform
+
+     
+def findTransform(fit_file):
     transFile= open("transformsLog.txt", 'r')
     rotationsMats=[]
     translationArray=[]
-    checkLine= fit_file+ " opened"
+    checkLine= "Calculating transformations and translations " + str(fit_file)
     for line in transFile:
         if checkLine in line:
-            if firstMonomer==False:
-                    transFile.next() # the turn command isn't made on the first monomer
-            transFile.next()
+	    transFile.next()
             transFile.next()
             transFile.next()
             firstRow=transFile.next().split()
@@ -174,7 +187,6 @@ def findTranform(fit_file):
             thirdRow=transFile.next().split()
             rotationsMats.append([[float(firstRow[0]),float(firstRow[1]),float(firstRow[2])],[float(secRow[0]),float(secRow[1]),float(secRow[2])],[float(thirdRow[0]),float(thirdRow[1]),float(thirdRow[2])]])
             translationArray.append([float(firstRow[3]), float(secRow[3]), float(thirdRow[3])])
-            firstMonomer=False
 
     return rotationsMats,translationArray
 
@@ -300,7 +312,7 @@ def checkAllNoPowerfit(monomer_file,N,map_file,density):
     runSegment(map_file)
     #all closed
     
-    rotation=translation=tempScore=[0,0,0]
+    tempScore=[0,0,0]
     results=[]
     fitToSegment(monomer_file)
     fits_dir="fitDir"
@@ -309,12 +321,12 @@ def checkAllNoPowerfit(monomer_file,N,map_file,density):
             continue
         numID=fits
         for i in range (3):
-            #rotation[i],translation[i]= cyclic_shift(monomer_file,fits,fits_dir,N,axes[i],center,i)
-            cyclic_shift(monomer_file,fits,fits_dir,N,axes[i],center,i)
+            cyclic_shift(fits,fits_dir,N,axes[i],center,i)
             tempScore[i]=get_score(map_file,N,density)
             rc("close all")
         maxIndex=numpy.argmax(tempScore)
-        results.append([numID,tempScore[maxIndex], rotation[maxIndex], translation[maxIndex]])
+	rotationsMat,translationArray= cyclicForOutput(monomer_file,fits,fits_dir,N,axes[maxIndex],center)
+        results.append([numID,tempScore[maxIndex], rotationsMat, translationArray])
           
     #sort the fits according to its score, so that the best score is first(place 0) 
     sortedResults= sorted(results, key= lambda item:item[1], reverse= True)
