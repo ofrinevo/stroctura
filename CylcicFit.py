@@ -85,26 +85,26 @@ def fitToSegment(monomer_file):
     for segmentedMapFile in os.listdir( "segmentationsDir" ) :
         rc( "open " + monomer_file)
         rc( "open segmentationsDir/" + segmentedMapFile)
-	    rc( "measure center #0")
-	    rc( "measure center #1")
-	    saveReplyLog("log.txt")
-    	log= open("log.txt", 'r')
-    	lines=log.readlines()
-    	centerLine1=lines[len(lines)-2]
-    	centerLine0=lines[len(lines)-3] 
-    	print "center line 1 is " + centerLine1
-    	print "center line 0 is " + centerLine0
-    	line0Array=centerLine0.split()
-    	line1Array=centerLine1.split()
-    	print "x is " +line0Array[-3][1:-1] + " and y is " + line0Array[-2][:-1] + "and z is " + line0Array[-1][-1]
-    	monomerCenter= (float(line0Array[-3][1:-1]), float(line0Array[-2][:-1]), float(line0Array[-1][:-1]))
-    	segmentCenter= (float(line1Array[-3][1:-1]), float(line1Array[-2][:-1]), float(line1Array[-1][:-1]))
-    	moveAxis= (segmentCenter[0]-monomerCenter[0], segmentCenter[1]-monomerCenter[1], segmentCenter[2]-monomerCenter[2])
-    	print "monomer Center is " + str(monomerCenter)
-    	print "segment Center is " + str(segmentCenter)
-    	print "move axis is " + str(moveAxis)
-    	print "move "+str(moveAxis[0]) +","+ str(moveAxis[1]) + "," + str(moveAxis[2]) + " models #0"
-    	rc("move "+str(moveAxis[0]) +","+ str(moveAxis[1]) + "," + str(moveAxis[2]) + " models #0")
+        rc( "measure center #0")
+        rc( "measure center #1")
+        saveReplyLog("log.txt")
+        log= open("log.txt", 'r')
+        lines=log.readlines()
+        centerLine1=lines[len(lines)-2]
+        centerLine0=lines[len(lines)-3] 
+        print "center line 1 is " + centerLine1
+        print "center line 0 is " + centerLine0
+        line0Array=centerLine0.split()
+        line1Array=centerLine1.split()
+        print "x is " +line0Array[-3][1:-1] + " and y is " + line0Array[-2][:-1] + "and z is " + line0Array[-1][-1]
+        monomerCenter= (float(line0Array[-3][1:-1]), float(line0Array[-2][:-1]), float(line0Array[-1][:-1]))
+        segmentCenter= (float(line1Array[-3][1:-1]), float(line1Array[-2][:-1]), float(line1Array[-1][:-1]))
+        moveAxis= (segmentCenter[0]-monomerCenter[0], segmentCenter[1]-monomerCenter[1], segmentCenter[2]-monomerCenter[2])
+        print "monomer Center is " + str(monomerCenter)
+        print "segment Center is " + str(segmentCenter)
+        print "move axis is " + str(moveAxis)
+        print "move "+str(moveAxis[0]) +","+ str(moveAxis[1]) + "," + str(moveAxis[2]) + " models #0"
+        rc("move "+str(moveAxis[0]) +","+ str(moveAxis[1]) + "," + str(moveAxis[2]) + " models #0")
         rc( "fitmap #0 #1" )
         rc("write format pdb #0 fitDir/model" + str(i)+".pdb")
         rc("close all")
@@ -296,6 +296,7 @@ def main(monomer_file,N,map_file,density):
     sortedResults= sorted(results, key= lambda item:item[1], reverse= True)
     rc("close all")
     output(sortedResults)
+    print "The correct axis is number " + str(maxIndex)
     print "Done"
 
 
