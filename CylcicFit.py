@@ -7,7 +7,6 @@ import numpy
 import subprocess
 import VolumeViewer
 from Segger import segment_dialog as SD
-from chimera import openModels
 
 #Constants
 ROTATION_DEGREE = 20
@@ -87,6 +86,9 @@ def fitToSegment(monomer_file):
         rc( "open " + monomer_file)
 	v= VolumeViewer.open_volume_file("segmentationsDir/" + segmentedMapFile)[0]
 	d=v.data
+	#We move the monomer close to the segmented-region map to improve powerfit, so we measure the position of the monomer in atomic coordinates
+	#measure the position of the segmented-map in grid indices, convert it to atomic corrdinates, and move the monomer in the coordinates 		
+	#difference axis, then running fitmap to fit the monomer to the region-map when they are closed to each other
 	rc( "measure center #0")
 	rc( "measure center #1")
 	saveReplyLog("log.txt")
@@ -94,20 +96,12 @@ def fitToSegment(monomer_file):
 	lines=log.readlines()
 	centerLine1=lines[len(lines)-2]
 	centerLine0=lines[len(lines)-3] 
-	print "center line 1 is " + centerLine1
-	print "center line 0 is " + centerLine0
 	line0Array=centerLine0.split()
 	line1Array=centerLine1.split()
-	print "x is " +line0Array[-3][1:-1] + " and y is " + line0Array[-2][:-1] + "and z is " + line0Array[-1][-1]
 	monomerCenter= (float(line0Array[-3][1:-1]), float(line0Array[-2][:-1]), float(line0Array[-1][:-1]))
 	segmentCenter= (float(line1Array[-3][1:-1]), float(line1Array[-2][:-1]), float(line1Array[-1][:-1]))
-	x,y,z= d.ijk_to_xyz(segmentCenter)
-	print "atom coordinates of segment map: x= " +str(x) + " y= " + str(y) + " z= " +str(z) 
+	x,y,z= d.ijk_to_xyz(segmentCenter) 
 	moveAxis= (x-monomerCenter[0], y-monomerCenter[1], z-monomerCenter[2])
-	print "monomer Center is " + str(monomerCenter)
-	print "segment Center is " + str(segmentCenter)
-	print "move axis is " + str(moveAxis)
-	print "move "+str(moveAxis[0]) +","+ str(moveAxis[1]) + "," + str(moveAxis[2]) + " models #0"
 	rc("move "+str(moveAxis[0]) +","+ str(moveAxis[1]) + "," + str(moveAxis[2]) + " models #0")
         rc( "fitmap #0 #1" )
         rc("write format pdb #0 fitDir/model" + str(i)+".pdb")
@@ -153,7 +147,7 @@ def cyclic_shift(fit_file,fits_dir,N,symetry_axis ,symetry_center,numOfAxis):
     os.system("mkdir cycledFits")
     rc("cd cycledFits")
     rc("combine #0,#1 close 1")
-    rc("write format pdb #"+ str(N) + " " + filePath+".pdb") #why save the map? we keep it open to immediately calc score
+    rc("write format pdb #"+ str(N) + " " + filePath+".pdb") 
     rc("cd ..")
     rc("cd ..")
 
