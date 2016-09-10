@@ -82,29 +82,30 @@ def fitToSegment(monomer_file):
     i=0
     for segmentedMapFile in os.listdir( "segmentationsDir" ) :
         rc( "open " + monomer_file)
-    v= VolumeViewer.open_volume_file("segmentationsDir/" + segmentedMapFile)[0]
-    d=v.data
-    #We move the monomer close to the segmented-region map to improve powerfit, so we measure the position of the monomer in atomic coordinates
-    #measure the position of the segmented-map in grid indices, convert it to atomic corrdinates, and move the monomer in the coordinates       
-    #difference axis, then running fitmap to fit the monomer to the region-map when they are closed to each other
-    rc( "measure center #0")
-    rc( "measure center #1")
-    saveReplyLog("log.txt")
-    log= open("log.txt", 'r')
-    lines=log.readlines()
-    centerLine1=lines[len(lines)-2]
-    centerLine0=lines[len(lines)-3] 
-    line0Array=centerLine0.split()
-    line1Array=centerLine1.split()
-    monomerCenter= (float(line0Array[-3][1:-1]), float(line0Array[-2][:-1]), float(line0Array[-1][:-1]))
-    segmentCenter= (float(line1Array[-3][1:-1]), float(line1Array[-2][:-1]), float(line1Array[-1][:-1]))
-    x,y,z= d.ijk_to_xyz(segmentCenter) 
-    moveAxis= (x-monomerCenter[0], y-monomerCenter[1], z-monomerCenter[2])
-    rc("move "+str(moveAxis[0]) +","+ str(moveAxis[1]) + "," + str(moveAxis[2]) + " models #0")
-    rc( "fitmap #0 #1" )
-    rc("write format pdb #0 fitDir/model" + str(i)+".pdb")
-    rc("close all")
-    i+=1
+        v= VolumeViewer.open_volume_file("segmentationsDir/" + segmentedMapFile)[0]
+        d=v.data
+        #We move the monomer close to the segmented-region map to improve powerfit, so we measure the position of the monomer in atomic coordinates
+        #measure the position of the segmented-map in grid indices, convert it to atomic corrdinates, and move the monomer in the coordinates       
+        #difference axis, then running fitmap to fit the monomer to the region-map when they are closed to each other
+        rc( "measure center #0")
+        rc( "measure center #1")
+        saveReplyLog("log.txt")
+        log= open("log.txt", 'r')
+        lines=log.readlines()
+        centerLine1=lines[len(lines)-2]
+        centerLine0=lines[len(lines)-3] 
+        line0Array=centerLine0.split()
+        line1Array=centerLine1.split()
+        monomerCenter= (float(line0Array[-3][1:-1]), float(line0Array[-2][:-1]), float(line0Array[-1][:-1]))
+        segmentCenter= (float(line1Array[-3][1:-1]), float(line1Array[-2][:-1]), float(line1Array[-1][:-1]))
+        x,y,z= d.ijk_to_xyz(segmentCenter) 
+        moveAxis= (x-monomerCenter[0], y-monomerCenter[1], z-monomerCenter[2])
+        rc("move "+str(moveAxis[0]) +","+ str(moveAxis[1]) + "," + str(moveAxis[2])
+        + " models #0")
+        rc( "fitmap #0 #1" )
+        rc("write format pdb #0 fitDir/model" + str(i)+".pdb")
+        rc("close all")
+        i+=1
     
 def get_turn_command(deg,symetry_axis,symetry_center,model_index):
     """outputs a string with the turn command of the form
@@ -290,11 +291,11 @@ def main(monomer_file,N,map_file,density):
           
     #sort the fits according to its score, so that the best score is first(place 0) 
     sortedResults= sorted(results, key= lambda item:item[1], reverse= True)
-    rc("close all")
+    rc("close session")
     output(sortedResults)
     print "Done"
 
 
 ######ENTER RUNNING LINE HERE:
 #args are: monomer file, symm number, map file, map res
-main("4dyc.pdb",4,"4dyc_res6.mrc",6)
+main("5j40.pdb",6,"5j40_res6.mrc",6)
