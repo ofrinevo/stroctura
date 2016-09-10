@@ -76,7 +76,7 @@ def runSegment(map_file):
 
 def fitToSegment(monomer_file):
     """
-    saves all of the map's segments
+    Fits the monomer to each of the segments maps in segmentationsDir
     """
     os.system("rm -r fitDir ; mkdir fitDir")
     i=0
@@ -84,7 +84,7 @@ def fitToSegment(monomer_file):
         rc( "open " + monomer_file)
         v= VolumeViewer.open_volume_file("segmentationsDir/" + segmentedMapFile)[0]
         d=v.data
-        #We move the monomer close to the segmented-region map to improve powerfit, so we measure the position of the monomer in atomic coordinates
+        #We move the monomer close to the segmented-region map to improve FitMap, so we measure the position of the monomer in atomic coordinates
         #measure the position of the segmented-map in grid indices, convert it to atomic corrdinates, and move the monomer in the coordinates       
         #difference axis, then running fitmap to fit the monomer to the region-map when they are closed to each other
         rc( "measure center #0")
@@ -128,21 +128,23 @@ def get_turn_command(deg,symetry_axis,symetry_center,model_index):
 
 def cyclic_shift(fit_file,fits_dir,N,symetry_axis ,symetry_center,numOfAxis):
     """
-    fit_file- location of the fitted monomer to the map by powerfit
+    fit_file- location of the fitted monomer to the map
     fits_dir- the directory with the fit-files
     N - number of symmetry
     symetry_axis - a tuple of the form (x,y,z)
     symetry_center -  a tuple of the form (x,y,z)
     numOfAxis- the index of symmetry axis (1/2/3)
+
+    Generating the complete protein from the fitted monomer we got from the fitting stage, according to symmetry axis
     """
     rc("cd "+fits_dir)
     for i in range(N):
         rc("open " + fit_file)
         if i == 0: 
             continue
-        command = get_turn_command(i*360/N,symetry_axis,symetry_center,i) #changed for output
+        command = get_turn_command(i*360/N,symetry_axis,symetry_center,i) 
         rc(command)
-    filePath= "after"+fit_file+" axis "+str(numOfAxis)
+    filePath= "after"+fit_file[:-4]+"_axis"+str(numOfAxis)
     os.system("mkdir cycledFits")
     rc("cd cycledFits")
     rc("combine #0,#1 close 1")
@@ -152,7 +154,10 @@ def cyclic_shift(fit_file,fits_dir,N,symetry_axis ,symetry_center,numOfAxis):
 
 
 def cyclicForOutput(monomer_file,fit_file,fits_dir,N,symetry_axis,symetry_center):
-
+    """
+    Shifting again the monomer in cyclic transformation to compute the translations and rotations
+    of the monomers to the original monomer. Chimera's match outputs the rotation matrix between two same structures
+    """
     rc("open " + monomer_file) 
     rc("cd " + fits_dir)
     for i in range(N):
@@ -161,7 +166,7 @@ def cyclicForOutput(monomer_file,fit_file,fits_dir,N,symetry_axis,symetry_center
             print "Calculating transformations and translations " + fit_file #important! Do not remove
             rc("match #" + str(i+1) + " #0 showMatrix true move false")
             continue
-        command = get_turn_command(i*360/N,symetry_axis,symetry_center,i+1) #changed for output
+        command = get_turn_command(i*360/N,symetry_axis,symetry_center,i+1) 
         rc(command)
         print "Calculating transformations and translations " + fit_file #important! Do not remove
         rc("match #" + str(i+1) + " #0 showMatrix true move false")
@@ -174,7 +179,7 @@ def cyclicForOutput(monomer_file,fit_file,fits_dir,N,symetry_axis,symetry_center
      
 def findTransform(fit_file):
     """
-    Given a fit, returns the set of transformations and torartions
+    Given a fit, returns the set of transformations and rotartions
     """
     transFile= open("log.txt", 'r')
     rotationsMats=[]
@@ -254,8 +259,7 @@ def output(resultsArr):
     """
     out= open("Results.txt", 'w')
     for i in range (len(resultsArr)):
-        out.write("\nResult "+ str(i+1) +":\t Fit " + str(resultsArr[i][0])+ (":\n") + "score: " + str(resultsArr[i][1])+ "\n" + 
-        "transformations:\n") 
+        out.write("\nResult "+ str(i+1) +":\t Fit: " + str(resultsArr[i][0])+ "\t complete protein in cycledFits: " + "after"+str((resultsArr[i][0])[:-4])+"_axis"+ str(resultsArr[i][4]+1)+ (".pdb\n") + "score: " + str(resultsArr[i][1])+ "\n" + "transformations:\n") 
         for j in range (len(resultsArr[i][2])):
             out.write("monomer " +str(j+1)+ ":\n")
             out.write("rotations: " +str(mat2angles((resultsArr[i][2])[j])) + "\n")
@@ -286,12 +290,12 @@ def main(monomer_file,N,map_file,density, scoreThrd = 900):
             continue
         numID=fits
         for i in range (3):
-            cyclic_shift(fits,fits_dir,N,axes[i],center,i)
+            cyclic_shift(fits,fits_dir,N,axes[i],center,i+1)
             tempScore[i]=get_score(map_file,N,density)
             rc("close all")
         maxIndex=numpy.argmax(tempScore)
         rotationsMat,translationArray= cyclicForOutput(monomer_file,fits,fits_dir,N,axes[maxIndex],center)
-        results.append([numID,tempScore[maxIndex], rotationsMat, translationArray])
+        results.append([numID,tempScore[maxIndex], rotationsMat, translationArray, maxIndex])
         if tempScore[maxIndex] >= scoreThrd:
             break
           
