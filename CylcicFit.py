@@ -1,5 +1,5 @@
 from chimera import runCommand as rc
-from chimera.tkgui import saveReplyLog
+from chimera.tkgui import saveReplyLog, clearReplyLog
 import sys
 import os
 import math
@@ -262,7 +262,11 @@ def output(resultsArr):
             out.write("translations: " +str((resultsArr[i][3])[j]) + "\n\n")
 
                 
-def main(monomer_file,N,map_file,density):
+def main(monomer_file,N,map_file,density, scoreThrd = 900):
+    #close previous models and clear reply log
+    rc("close all")
+    clearReplyLog()
+    
     #calculates symm axes and center
     tupArr=get_principal_axes(map_file)
     axes=tupArr[0:3]
@@ -288,6 +292,8 @@ def main(monomer_file,N,map_file,density):
         maxIndex=numpy.argmax(tempScore)
         rotationsMat,translationArray= cyclicForOutput(monomer_file,fits,fits_dir,N,axes[maxIndex],center)
         results.append([numID,tempScore[maxIndex], rotationsMat, translationArray])
+        if tempScore[maxIndex] >= scoreThrd:
+            break
           
     #sort the fits according to its score, so that the best score is first(place 0) 
     sortedResults= sorted(results, key= lambda item:item[1], reverse= True)
@@ -298,4 +304,4 @@ def main(monomer_file,N,map_file,density):
 
 ######ENTER RUNNING LINE HERE:
 #args are: monomer file, symm number, map file, map res
-main("5j40.pdb",6,"5j40_res6.mrc",6)
+main("5j40_moved.pdb",6,"5j40_res6.mrc",6)
