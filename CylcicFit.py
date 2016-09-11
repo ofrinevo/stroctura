@@ -307,5 +307,4 @@ def main(monomer_file,N,map_file,density, scoreThrd = 900):
 
 
 ######ENTER RUNNING LINE HERE:
-#args are: monomer file, symm number, map file, map res
-main("5j40_moved.pdb",6,"5j40_res6.mrc",6)
+main(monomer_file,symm_number,map_file,map_res)
